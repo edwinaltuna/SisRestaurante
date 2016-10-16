@@ -8,7 +8,5 @@ namespace C3_Dominio
 {
     public class entMesa
     {
-        public int IdMesa { get; set; }//me llega :v
-        //oli 
     }
 }
