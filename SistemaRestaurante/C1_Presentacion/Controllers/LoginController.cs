@@ -10,11 +10,10 @@ namespace C1_Presentacion.Controllers
     {
         //
         // GET: /Login/
-
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
-
     }
 }
