@@ -8,5 +8,10 @@ namespace C3_Dominio
 {
     public class entMesa
     {
+        public int idMesa { get; set; }
+        public int numero { get; set; }
+        public int descripcion { get; set; }
+        public int estado { get; set; }
+
     }
 }
