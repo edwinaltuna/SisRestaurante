@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entTipoCliente
+    public class TipoCliente
     {
         public int idTipoCliente { get; set; }
         public String nombre { get; set; }

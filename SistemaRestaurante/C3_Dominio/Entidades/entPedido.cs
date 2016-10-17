@@ -13,8 +13,8 @@ namespace C3_Dominio
         public Decimal total { get; set; }
         public String atendido { get; set; }
         public Boolean estado { get; set; }
-        public entCliente cliente { get; set; }
-        public entMesa mesa { get; set; }
+        public Cliente cliente { get; set; }
+        public Mesa mesa { get; set; }
 
     }
 }

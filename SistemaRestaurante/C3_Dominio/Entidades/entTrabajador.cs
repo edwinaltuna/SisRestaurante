@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entTrabajador : entPersona
+    public class entTrabajador : Persona
     {
         public int idTrabajador { get; set; }
         public String usuario { get; set; }
         public String contrasena { get; set; }
         public Boolean estado { get; set; }
-        public entTipoTrabajador tipotrabajador { get; set; }
+        public TipoTrabajador tipotrabajador { get; set; }
 
     }
 }

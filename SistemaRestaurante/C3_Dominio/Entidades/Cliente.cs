@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entCliente : entPersona
+    public class Cliente : Persona
     {
         public int idCliente { get; set; }
-        public entPersona persona { get; set; }
+        public Persona persona { get; set; }
         public String ruc { get; set; }
         public String direccion { get; set; }
         public String telefono { get; set; }
         public Boolean estado { get; set; }
-        public entTipoCliente tipocliente { get; set; }
+        public TipoCliente tipocliente { get; set; }
     }
 }

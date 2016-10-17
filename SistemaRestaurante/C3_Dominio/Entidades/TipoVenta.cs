@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entDetallePedido
+    public class TipoVenta
     {
-        public int idDetallePedido { get; set; }
-        public Decimal subtotal { get; set; }
+        public int idTipoVenta { get; set; }
+        public String nombre { get; set; }
         public String descripcion { get; set; }
         public Boolean estado { get; set; }
-        public entProducto producto { get; set; }
-        public entPedido pedido { get; set; }
 
     }
 }

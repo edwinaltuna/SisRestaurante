@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entProducto
+    public class TipoTrabajador
     {
-        public int idProducto { get; set; }
+        public int idTipoTrabajador { get; set; }
         public String nombre { get; set; }
-        public float precio { get; set; }
         public String descripcion { get; set; }
-        public DateTime fecha { get; set; }
-        public String imagen { get; set; }
         public Boolean estado { get; set; }
-        public entTipoProducto tipoproducto { get; set; }
 
     }
 }

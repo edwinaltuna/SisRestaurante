@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entMesa
+    public class Mesa
     {
         public int idMesa { get; set; }
         public int numero { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio
 {
-    public class entPersona
+    public class Persona
     {
         public int idPersona { get; set; }
         public String nombres { get; set; }
