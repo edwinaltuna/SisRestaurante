@@ -43,10 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">
-      <Project>{dac9e9b2-acfd-459a-9c60-577a92e586dc}</Project>
-      <Name>C3_Dominio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\C4_Persistencia\C4_Persistencia.csproj">
       <Project>{0f34b5e8-1e3a-42cc-a850-84a0b525ab1f}</Project>
       <Name>C4_Persistencia</Name>
