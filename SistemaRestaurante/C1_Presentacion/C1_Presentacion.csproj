@@ -159,7 +159,12 @@
   <ItemGroup>
     <Content Include="Views\Intranet\Principal.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\C2_Aplicacion\C2_Aplicacion.csproj">
+      <Project>{a0adf581-bbac-44e7-9c83-d6e8bc927bc1}</Project>
+      <Name>C2_Aplicacion</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfonte0a5.eot" />

@@ -39,8 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GestorDAOSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrabajadorSQL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">
+      <Project>{bb83c2c0-b1aa-4925-afdf-4d9b8b66dfeb}</Project>
+      <Name>C3_Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
