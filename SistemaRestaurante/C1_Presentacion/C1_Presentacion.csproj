@@ -164,6 +164,10 @@
       <Project>{a0adf581-bbac-44e7-9c83-d6e8bc927bc1}</Project>
       <Name>C2_Aplicacion</Name>
     </ProjectReference>
+    <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">
+      <Project>{bb83c2c0-b1aa-4925-afdf-4d9b8b66dfeb}</Project>
+      <Name>C3_Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />

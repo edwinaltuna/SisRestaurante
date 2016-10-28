@@ -39,10 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="gestionarTrabajadorServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">
+      <Project>{bb83c2c0-b1aa-4925-afdf-4d9b8b66dfeb}</Project>
+      <Name>C3_Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\C4_Persistencia\C4_Persistencia.csproj">
       <Project>{0f34b5e8-1e3a-42cc-a850-84a0b525ab1f}</Project>
       <Name>C4_Persistencia</Name>

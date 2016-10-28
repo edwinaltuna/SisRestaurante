@@ -18,8 +18,7 @@ namespace C4_Persistencia
             try
             {
                 conexion = new SqlConnection();
-                conexion.ConnectionString = "Data source=uwjaf6p6fj.database.windows.net,1433;Initial Catalog=SistemaRestaurantBD;" +
-                 "User ID=Administrador;Password=Admi123456";
+                conexion.ConnectionString = "Data Source=uwjaf6p6fj.database.windows.net,1433;Initial Catalog=SistemaRestaurantBD;User ID=Administrador;Password=Admin123456";
                 conexion.Open();
             }
             catch (Exception e)

@@ -36,19 +36,19 @@
             <div class="panel-heading">
                 <h3 class="text-center m-t-10"> Sign In to <strong>Restaurant System</strong> </h3>
             </div>
-
+            <center><span class="label label-warning" style="font-size:15px;">@ViewBag.mensaje</span></center>
             <div class="panel-body">
-                <form class="form-horizontal m-t-10 p-20 p-b-0" action="/Intranet/Principal">
+                <form class="form-horizontal m-t-10 p-20 p-b-0" method="post" >
 
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" placeholder="Nombre de Usuario">
+                            <input class="form-control" type="text" placeholder="Nombre de Usuario" name="txtusuario">
                         </div>
                     </div>
                     <div class="form-group ">
 
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" placeholder="Password">
+                            <input class="form-control" type="password" placeholder="Password" name="txtpassword">
                         </div>
                     </div>
 
@@ -64,7 +64,7 @@
 
                     <div class="form-group text-right">
                         <div class="col-xs-12">
-                            <button class="btn btn-success w-md" type="submit">Ingresar</button>
+                            <button class="btn btn-success w-md" type="submit" name="btnentrar">Ingresar</button>
                         </div>
                     </div>
                     <div class="form-group m-t-30">
