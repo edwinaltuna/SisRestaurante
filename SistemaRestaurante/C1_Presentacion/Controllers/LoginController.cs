@@ -27,11 +27,8 @@ namespace C1_Presentacion.Controllers
             try
             {
                 string usuario = frm["txtusuario"].ToString();
-                string pass = frm["txtpassword"].ToString();
-                Trabajador trabajador = null;
-                gestionarTrabajadorServices gestionartrabajadorservicios = new gestionarTrabajadorServices();
-
-                trabajador = gestionartrabajadorservicios.IniciarSession(usuario, pass);
+                string clave = frm["txtpassword"].ToString();
+                Trabajador trabajador =  GestionarTrabajadorService.Instancia.BuscarTrabajador(usuario, clave);
                 Session["Trabajador"] = trabajador;
                 return RedirectToAction("Principal", "Intranet");
 

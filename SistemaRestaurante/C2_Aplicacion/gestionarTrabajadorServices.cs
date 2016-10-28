@@ -9,18 +9,27 @@ using System.Data.SqlClient;
 
 namespace C2_Aplicacion
 {
-    public class gestionarTrabajadorServices
+    public class GestionarTrabajadorService
     {
+
+        #region Singleton
+        private static readonly GestionarTrabajadorService _instancia = new GestionarTrabajadorService();
+        public static GestionarTrabajadorService Instancia
+        {
+            get { return _instancia; }
+        }
+        #endregion Singleton
+
         private GestorDAOSQL gestorDAOSQL;
         private TrabajadorSQL trabajadorSQL;
 
-        public gestionarTrabajadorServices()
+        public GestionarTrabajadorService()
         {
             gestorDAOSQL = new GestorDAOSQL();
             trabajadorSQL = new TrabajadorSQL(gestorDAOSQL);
         }
 
-        public Trabajador IniciarSession(String usuario, String clave)
+        public Trabajador BuscarTrabajador(String usuario, String clave)
         {
             try
             {
