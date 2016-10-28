@@ -93,7 +93,7 @@ namespace C4_Persistencia
 
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@nombre", t.nombre);
-                        cmd.Parameters.AddWithValue("@dni", t.descripcion);
+                        cmd.Parameters.AddWithValue("@descripcion", t.descripcion);
                         cmd.Parameters.AddWithValue("@estado", t.estado);
 
                         cn.Open();
