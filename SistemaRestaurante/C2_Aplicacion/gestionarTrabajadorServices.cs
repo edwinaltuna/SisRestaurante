@@ -24,12 +24,22 @@ namespace C2_Aplicacion
         {
             try
             {
-                gestorDAOSQL.abrirConexion();
-                Trabajador trabajador = trabajadorSQL.Login(usuario, clave);
-                gestorDAOSQL.cerrarConexion();
+                //gestorDAOSQL.abrirConexion();
+                //Trabajador trabajador = trabajadorSQL.Login(usuario, clave);
+                //gestorDAOSQL.cerrarConexion();
+                Trabajador trabajador = null;
+                if (String.IsNullOrEmpty(usuario))
+                    throw new ApplicationException("Ingrese un usuario.");
+                else if (string.IsNullOrEmpty(clave))
+                    throw new ApplicationException("Ingrese una clave.");
+                else if (trabajador == null)
+                    throw new ApplicationException("Usuario o password erróneos.");
                 return trabajador;
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 

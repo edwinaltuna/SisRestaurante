@@ -15,7 +15,7 @@ namespace C1_Presentacion.Controllers
         //
         // GET: /Login/
         [HttpGet]
-        public ActionResult Login(String mensaje)
+        public ActionResult Login(string mensaje)
         {
             ViewBag.mensaje = mensaje;
             return View();
@@ -26,27 +26,21 @@ namespace C1_Presentacion.Controllers
         {
             try
             {
-                String usuario = frm["txtusuario"].ToString();
-                String pass = frm["txtpassword"].ToString();
+                string usuario = frm["txtusuario"].ToString();
+                string pass = frm["txtpassword"].ToString();
                 Trabajador trabajador = null;
                 gestionarTrabajadorServices gestionartrabajadorservicios = new gestionarTrabajadorServices();
-                if (usuario != "")
-                {
-                    if (pass!= "")
-                    {
-                        trabajador = gestionartrabajadorservicios.IniciarSession(usuario, pass);
-                        if (trabajador != null)
-                        {
-                            Session["trabajador"] = trabajador;
-                            return RedirectToAction("Principal", "Intranet");
-                        }
-                        else { return RedirectToAction("Login", new { mensaje = "Usuario o contraseña no validos" }); }
-                    }
-                    else { return RedirectToAction("Login", new { mensaje = "Debe Ingresar una Contraseña" }); }
-                }
-                else { return RedirectToAction("Login", new { mensaje = "Debe Ingresar un Usuario" }); }
+
+                gestionartrabajadorservicios.IniciarSession(usuario, pass);
+                Session["trabajador"] = trabajador;
+                return RedirectToAction("Principal", "Intranet");
+
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e)
+            {
+                ViewBag.mensaje = e.Message;
+                return View();
+            }
         }
     }
 }
