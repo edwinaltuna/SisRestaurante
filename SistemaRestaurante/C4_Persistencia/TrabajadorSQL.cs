@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using C3_Dominio;
 using C3_Dominio.Entidades;
-using System.Data.SqlClient;
 
 namespace C4_Persistencia
 {
