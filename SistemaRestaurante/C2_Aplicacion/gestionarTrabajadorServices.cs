@@ -24,10 +24,14 @@ namespace C2_Aplicacion
         {
             try
             {
-                gestorDAOSQL.abrirConexion();
-                Trabajador trabajador = trabajadorSQL.Login(usuario, clave);
-                gestorDAOSQL.cerrarConexion();
-                
+                Trabajador trabajador = null;
+                using (SqlConnection conexionActual = gestorDAOSQL.abrirConexion())
+                {
+                    conexionActual.Open();
+                    trabajador = trabajadorSQL.Buscar(usuario, clave);
+
+                }
+
                 if (string.IsNullOrEmpty(usuario))
                     throw new ApplicationException("Ingrese un usuario.");
                 else if (string.IsNullOrEmpty(clave))
@@ -38,6 +42,10 @@ namespace C2_Aplicacion
             }
             catch (Exception e)
             {
+                if(e.GetType().IsAssignableFrom(typeof(SqlException)))
+                {
+                    throw new ApplicationException("Error de conexión a la BD.");
+                }
                 throw e;
             }
         }

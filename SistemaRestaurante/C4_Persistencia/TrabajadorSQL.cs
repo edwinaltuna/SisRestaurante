@@ -42,22 +42,27 @@ namespace C4_Persistencia
             return trabajador;
         }
 
-        public Trabajador Login(String Usuario, String Clave)
+        public Trabajador Buscar(string Usuario, string Clave)
         {
-            Trabajador trabajador = null;
-            String sentenciaSQL = "select p.idPersona,p.nombres,p.apellidoPaterno,p.ApellidoMaterno,p.dni,p.fechaNacimiento,"+
-                                  "p.direccion,p.telefono,t.idTrabajador,t.usuario,t.contrasena,tt.idTipoTrabajador,tt.nombre,tt.descripcion " +
-                                  "from TB_Trabajador t inner join TB_Persona p on(t.idPersona = p.idPersona) "+
-                                  "inner join TB_TipoTrabajador tt on(t.idTipoTrabajador = tt.idTipoTrabajador) "+
-                                  "where t.estado = 1 and t.usuario = '"+ Usuario + "' and t.contrasena = '" + Clave + "'";
+            Trabajador trabajador = null;            
             try
             {
-                SqlDataReader resultado = gestorDAOSQL.EjecutarConsulta(sentenciaSQL);
-                if (resultado.Read()) {
-                    trabajador = CrearObjetoTrabajador(resultado);
+                using (SqlConnection conexionActual = GestorDAOSQL.Instancia.abrirConexion())
+                {
+                    conexionActual.Open();
+                    SqlCommand comando = GestorDAOSQL.Instancia.ObtenerComandoSP("SP_BuscarUsuario", conexionActual);
+                    comando.Parameters.AddWithValue("@param_username", Usuario);
+                    comando.Parameters.AddWithValue("@param_password", Clave);
+                    SqlDataReader resultado = comando.ExecuteReader();
+                    if (resultado.Read())
+                    {
+                        trabajador = CrearObjetoTrabajador(resultado);
+                    }
+                    resultado.Close();
+                    
                 }
-                resultado.Close();
                 return trabajador;
+
             }
             catch (Exception ex)
             {

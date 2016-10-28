@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using C3_Dominio;
 using C3_Dominio.Entidades;
+using System.Data;
 
 namespace C4_Persistencia
 {
@@ -26,28 +27,30 @@ namespace C4_Persistencia
             List<TipoTrabajador> listarTipoTrabajador = new List<TipoTrabajador>();
             try
             {
-                SqlConnection cn = GestorDAOSQL.Instancia.Conectar();
-                cmd = new SqlCommand("listarTipoTrabajador", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
+                using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
                 {
-                    TipoTrabajador t = new TipoTrabajador();
-                    t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
-                    t.nombre = dr["nombre"].ToString();
-                    t.descripcion = dr["dni"].ToString();
-                    t.estado = Convert.ToBoolean(dr["id"]);
-                    listarTipoTrabajador.Add(t);
+                    cmd = new SqlCommand("listarTipoTrabajador", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        TipoTrabajador t = new TipoTrabajador();
+                        t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
+                        t.nombre = dr["nombre"].ToString();
+                        t.descripcion = dr["dni"].ToString();
+                        t.estado = Convert.ToBoolean(dr["id"]);
+                        listarTipoTrabajador.Add(t);
+                    }
                 }
+                return listarTipoTrabajador;
             }
             catch (Exception e)
             {
                 throw e;
             }
-            finally { cmd.Connection.Close(); }
-            return listarTipoTrabajador;
+            
         }
 
         public TipoTrabajador ListarTrabajadorPorId(Int16 id)
@@ -56,35 +59,37 @@ namespace C4_Persistencia
             TipoTrabajador t = null;
             try
             {
-                SqlConnection cn = Conexion.Instancia.Conectar();
-                cmd = new SqlCommand("sp_trabajador_listarXId", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("in_id", id);
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
                 {
-                    t = new TipoTrabajador();
-                    t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
-                    t.nombre = dr["nombre"].ToString();
-                    t.descripcion = dr["descripcion"].ToString();
-                    t.estado = Convert.ToBoolean(dr["estado"]);
+                    cmd = new SqlCommand("sp_trabajador_listarXId", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("in_id", id);
+                    cn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        t = new TipoTrabajador();
+                        t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
+                        t.nombre = dr["nombre"].ToString();
+                        t.descripcion = dr["descripcion"].ToString();
+                        t.estado = Convert.ToBoolean(dr["estado"]);
 
+                    }
                 }
+                return t;
             }
             catch (Exception e)
             {
                 throw e;
             }
-            finally { cmd.Connection.Close(); }
-            return t;
+            
         }
 
         public Boolean RegistrarTipoTrabajador(TipoTrabajador t)
         {
             Boolean inserto = false;
 
-            using (SqlConnection cn = Conexion.Instancia.Conectar())
+            using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
             {
                 using (SqlCommand cmd = new SqlCommand("sp_trabajador_Registrar", cn))
                 {

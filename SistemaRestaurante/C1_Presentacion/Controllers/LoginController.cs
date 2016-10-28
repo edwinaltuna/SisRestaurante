@@ -31,8 +31,8 @@ namespace C1_Presentacion.Controllers
                 Trabajador trabajador = null;
                 gestionarTrabajadorServices gestionartrabajadorservicios = new gestionarTrabajadorServices();
 
-                gestionartrabajadorservicios.IniciarSession(usuario, pass);
-                Session["trabajador"] = trabajador;
+                trabajador = gestionartrabajadorservicios.IniciarSession(usuario, pass);
+                Session["Trabajador"] = trabajador;
                 return RedirectToAction("Principal", "Intranet");
 
             }
