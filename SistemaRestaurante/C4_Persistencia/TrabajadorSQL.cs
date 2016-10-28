@@ -34,12 +34,35 @@ namespace C4_Persistencia
             trabajador.telefono = resultado.GetString(7);
             trabajador.idTrabajador = resultado.GetInt32(8);
             trabajador.usuario = resultado.GetString(9);
-            trabajador.usuario = resultado.GetString(10);
+            trabajador.contrasena = resultado.GetString(10);
             tipo.idTipoTrabajador = resultado.GetInt32(11);
             tipo.nombre = resultado.GetString(12);
             tipo.descripcion = resultado.GetString(13);
             trabajador.TipoTrabajador = tipo;
             return trabajador;
+        }
+
+        public Trabajador Login(String Usuario, String Clave)
+        {
+            Trabajador trabajador = null;
+            String sentenciaSQL = "select p.idPersona,p.nombres,p.apellidoPaterno,p.ApellidoMaterno,p.dni,p.fechaNacimiento,"+
+                                  "p.direccion,p.telefono,t.idTrabajador,t.usuario,t.contrasena,tt.idTipoTrabajador,tt.nombre,tt.descripcion " +
+                                  "from TB_Trabajador t inner join TB_Persona p on(t.idPersona = p.idPersona) "+
+                                  "inner join TB_TipoTrabajador tt on(t.idTipoTrabajador = tt.idTipoTrabajador) "+
+                                  "where t.estado = 1 and t.usuario = '"+ Usuario + "' and t.contrasena = '" + Clave + "'";
+            try
+            {
+                SqlDataReader resultado = gestorDAOSQL.EjecutarConsulta(sentenciaSQL);
+                if (resultado.Read()) {
+                    trabajador = CrearObjetoTrabajador(resultado);
+                }
+                resultado.Close();
+                return trabajador;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
