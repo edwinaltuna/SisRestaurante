@@ -15,5 +15,12 @@ namespace C3_Dominio.Entidades
         public string dni { get; set; }
         public DateTime fechaNacimiento { get; set; }
         public bool estado { get; set; }
+
+        #region metodos
+        public bool esMayorDeEdad()
+        {
+            return DateTime.Now.Year - fechaNacimiento.Year == 18;
+        }
+        #endregion metodos
     }
 }

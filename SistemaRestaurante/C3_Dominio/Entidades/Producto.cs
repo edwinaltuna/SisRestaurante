@@ -11,8 +11,15 @@ namespace C3_Dominio.Entidades
         public int id {get;set;}
         public double precio { get; set; }
         public string descripcion { get; set; }
-        public Date fecha { get; set; }
+        public DateTime fecha { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }
+
+        #region metodos
+        public bool estaDisponible()
+        {
+            return estado;
+        }
+        #endregion metodos
     }
 }

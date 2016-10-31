@@ -12,5 +12,7 @@ namespace C3_Dominio.Entidades
         String nombre {get; set;}
         String descripcion {get; set;}
         Boolean estado { get; set; }
+        #region metodos
+        #endregion metodos
     }
 }

@@ -13,5 +13,13 @@ namespace C3_Dominio.Entidades
         public string direccion { get; set; }
         public string telefono { get; set; }
         public TipoTrabajador tipoTrabajador { get; set; }
+
+        #region metodos
+        public bool telefonoValido()
+        {
+            string[] elementos = telefono.Split('-');
+            return elementos[1].Length == 6;
+        }
+        #endregion metodos
     }
 }

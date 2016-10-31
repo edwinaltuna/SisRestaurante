@@ -21,6 +21,7 @@ namespace C3_Dominio.Entidades
            }
        }
 
+       #region metodos
        public void calcularSiguienteSerie()
        {
            //TODO: algoritmo para calcular serie 
@@ -30,5 +31,6 @@ namespace C3_Dominio.Entidades
        {
             //TODO: algoritmo para calcular serie 
        }
+       #endregion metodos
     }
 }

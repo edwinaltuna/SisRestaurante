@@ -14,9 +14,11 @@ namespace C3_Dominio.Entidades
        public bool estado {get;set; }
        public Producto producto {get;set; }
 
+       #region metodos
        public double calcularSubTotal()
        {
            return cantidad * producto.precio;
        }
+       #endregion metodos
     }
 }
