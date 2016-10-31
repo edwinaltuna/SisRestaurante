@@ -8,9 +8,9 @@ namespace C3_Dominio.Entidades
 {
     public class Pedido
     {
-        int idPedido {get; set;}
+        int id {get; set;}
         DateTime fecha {get; set;}
-        Double total {get; set;}
+        double total {get; set;}
         int estado {get; set;}
         Cliente idCliente {get; set;}
         Mesa mesa {get; set;}

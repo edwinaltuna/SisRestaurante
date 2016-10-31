@@ -8,9 +8,9 @@ namespace C3_Dominio.Entidades
 {
     public class Trabajador : Persona
     {
-        public String usuario { get; set; }
-        public String contrasena { get; set; }
-        public String direccion { get; set; }
+        public string usuario { get; set; }
+        public string contrasena { get; set; }
+        public string direccion { get; set; }
         public string telefono { get; set; }
         public TipoTrabajador tipoTrabajador { get; set; }
     }

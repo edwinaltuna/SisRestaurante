@@ -8,7 +8,7 @@ namespace C3_Dominio.Entidades
 {
     public class Cliente : Persona
     {        
-        string ruc {get; set;}
-        TipoCliente tipoCliente {get; set;} 
+        string ruc {get; set; }
+        TipoCliente tipoCliente {get; set; } 
     }
 }
