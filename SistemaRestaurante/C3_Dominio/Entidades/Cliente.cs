@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio.Entidades
 {
-    public class Cliente
-    {
-
-      int idCliente {get; set;}
- Persona idPersona {get; set;}
-String ruc {get; set;}
-String direccion {get; set;}
-String telefono {get; set;}
-Boolean estado {get; set;}
-TipoCliente idTipoCliente {get; set;} 
-
-
-
+    public class Cliente : Persona
+    {        
+        string ruc {get; set; }
+        TipoCliente tipoCliente {get; set; } 
     }
 }

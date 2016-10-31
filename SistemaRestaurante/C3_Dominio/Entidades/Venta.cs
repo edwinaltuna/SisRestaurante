@@ -8,18 +8,27 @@ namespace C3_Dominio.Entidades
 {
    public class Venta
     {
+       public int id    {get; set;}
+       public TipoVenta tipoVenta {get; set;}
+       public Pedido pedido {get; set;}
+       private string serie {get;set;}
+       private string numero { get; set; }
+       public string serieNumero 
+       {
+           get
+           {
+               return serie + " - " + numero;
+           }
+       }
 
+       public void calcularSiguienteSerie()
+       {
+           //TODO: algoritmo para calcular serie 
+       }
 
-       public TipoVenta idTipoVenta {get; set;}
-       public int idVenta    {get; set;}
-       public Boolean estado {get; set;}
-
-       public TipoVenta idTipoventa {get; set;}
-
-       public Pedidocs idPedidos {get; set;}
-
-              
-
-
+       public void calcularSiguienteNumero()
+       {
+            //TODO: algoritmo para calcular serie 
+       }
     }
 }

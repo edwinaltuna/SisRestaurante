@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using C3_Dominio;
 using C3_Dominio.Entidades;
-using System.Data.SqlClient;
 
 namespace C4_Persistencia
 {
@@ -34,12 +34,40 @@ namespace C4_Persistencia
             trabajador.telefono = resultado.GetString(7);
             trabajador.idTrabajador = resultado.GetInt32(8);
             trabajador.usuario = resultado.GetString(9);
-            trabajador.usuario = resultado.GetString(10);
+            trabajador.contrasena = resultado.GetString(10);
             tipo.idTipoTrabajador = resultado.GetInt32(11);
             tipo.nombre = resultado.GetString(12);
             tipo.descripcion = resultado.GetString(13);
             trabajador.TipoTrabajador = tipo;
             return trabajador;
+        }
+
+        public Trabajador Buscar(string Usuario, string Clave)
+        {
+            Trabajador trabajador = null;            
+            try
+            {
+                using (SqlConnection conexionActual = GestorDAOSQL.Instancia.abrirConexion())
+                {
+                    conexionActual.Open();
+                    SqlCommand comando = GestorDAOSQL.Instancia.ObtenerComandoSP("SP_BuscarUsuario", conexionActual);
+                    comando.Parameters.AddWithValue("@param_username", Usuario);
+                    comando.Parameters.AddWithValue("@param_password", Clave);
+                    SqlDataReader resultado = comando.ExecuteReader();
+                    if (resultado.Read())
+                    {
+                        trabajador = CrearObjetoTrabajador(resultado);
+                    }
+                    resultado.Close();
+                    
+                }
+                return trabajador;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

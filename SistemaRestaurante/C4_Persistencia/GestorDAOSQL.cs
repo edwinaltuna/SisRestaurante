@@ -10,17 +10,24 @@ namespace C4_Persistencia
 {
     public class GestorDAOSQL
     {
+        #region Singleton
+        private static readonly GestorDAOSQL _instancia = new GestorDAOSQL();
+        public static GestorDAOSQL Instancia
+        {
+            get { return GestorDAOSQL._instancia; }
+        }
+        #endregion Singleton
+
         private SqlConnection conexion;
         private SqlTransaction transaction;
 
-        public void abrirConexion()
+        public SqlConnection abrirConexion()
         {
             try
             {
                 conexion = new SqlConnection();
-                conexion.ConnectionString = "Data source=uwjaf6p6fj.database.windows.net,1433;Initial Catalog=SistemaRestaurantBD;" +
-                 "User ID=Administrador;Password=Admi123456";
-                conexion.Open();
+                conexion.ConnectionString = "Data Source=uwjaf6p6fj.database.windows.net,1433;Initial Catalog=SistemaRestaurantBD;User ID=Administrador;Password=Admin123456";
+                return conexion;
             }
             catch (Exception e)
             {
@@ -82,32 +89,38 @@ namespace C4_Persistencia
             catch (Exception e) { throw e; }
         }
 
-        public SqlCommand ObtenerComandoSQL(String sentenciaSQL)
+        public SqlCommand obtenerComandoSQL(String sentenciaSQL, SqlConnection conexion, SqlTransaction transaccion = null)
         {
             try
             {
                 SqlCommand comando = conexion.CreateCommand();
-                if (transaction != null)
-                    comando.Transaction = transaction;
+                if (transaccion != null)
+                    comando.Transaction = transaccion;
                 comando.CommandText = sentenciaSQL;
                 comando.CommandType = CommandType.Text;
                 return comando;
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public SqlCommand ObtenerComandoSP(String procedure)
+        public SqlCommand ObtenerComandoSP(String procedimiento_almacenado, SqlConnection conexion, SqlTransaction transaccion = null)
         {
             try
             {
                 SqlCommand comando = conexion.CreateCommand();
-                if (transaction != null)
-                    comando.Transaction = transaction;
-                comando.CommandText = procedure;
+                if (transaccion != null)
+                    comando.Transaction = transaccion;
+                comando.CommandText = procedimiento_almacenado;
                 comando.CommandType = CommandType.StoredProcedure;
                 return comando;
             }
-            catch (Exception e) { throw e; }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -8,10 +8,10 @@ namespace C3_Dominio.Entidades
 {
     public class Trabajador : Persona
     {
-        public int idTrabajador { get; set; }
-        public String usuario { get; set; }
-        public String contrasena { get; set; }
-        public Boolean estado { get; set; }
-        public TipoTrabajador TipoTrabajador { get; set; }
+        public string usuario { get; set; }
+        public string contrasena { get; set; }
+        public string direccion { get; set; }
+        public string telefono { get; set; }
+        public TipoTrabajador tipoTrabajador { get; set; }
     }
 }
