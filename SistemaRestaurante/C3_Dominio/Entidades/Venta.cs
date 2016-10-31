@@ -11,24 +11,28 @@ namespace C3_Dominio.Entidades
        public int id    {get; set;}
        public TipoVenta tipoVenta {get; set;}
        public Pedido pedido {get; set;}
-       private string serie {get;set;}
-       private string numero { get; set; }
+       private int serie = 0;
+       private int numero = 0;
        public string serieNumero 
        {
            get
            {
-               return serie + " - " + numero;
+               calcularSiguienteSerie(serie);
+               calcularSiguienteNumero(numero);
+               return serie.ToString("3D") + " - " + numero.ToString("10D");
            }
        }
 
        #region metodos
-       public void calcularSiguienteSerie()
+       public void calcularSiguienteSerie(int serie)
        {
+           this.serie = serie+1;
            //TODO: algoritmo para calcular serie 
        }
 
-       public void calcularSiguienteNumero()
+       public void calcularSiguienteNumero(int numero)
        {
+           this.numero =  numero + 1;
             //TODO: algoritmo para calcular serie 
        }
        #endregion metodos
