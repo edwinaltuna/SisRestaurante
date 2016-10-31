@@ -8,10 +8,9 @@ namespace C3_Dominio.Entidades
 {
     public class TipoCliente
     {
-      int  idTipoCliente {get; set;}
-String nombre {get; set;}
-String descripcion {get; set;}
-Boolean estado { get; set; }
-
+        int  idTipoCliente {get; set;}
+        String nombre {get; set;}
+        String descripcion {get; set;}
+        Boolean estado { get; set; }
     }
 }
