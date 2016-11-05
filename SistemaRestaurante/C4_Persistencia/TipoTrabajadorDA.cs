@@ -39,7 +39,7 @@ namespace C4_Persistencia
                         TipoTrabajador t = new TipoTrabajador();
                         t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
                         t.nombre = dr["nombre"].ToString();
-                        t.descripcion = dr["dni"].ToString();
+                        //t.descripcion = dr["dni"].ToString();
                         t.estado = Convert.ToBoolean(dr["id"]);
                         listarTipoTrabajador.Add(t);
                     }
@@ -71,7 +71,7 @@ namespace C4_Persistencia
                         t = new TipoTrabajador();
                         t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
                         t.nombre = dr["nombre"].ToString();
-                        t.descripcion = dr["descripcion"].ToString();
+                        //t.descripcion = dr["descripcion"].ToString();
                         t.estado = Convert.ToBoolean(dr["estado"]);
 
                     }
@@ -98,7 +98,7 @@ namespace C4_Persistencia
 
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@nombre", t.nombre);
-                        cmd.Parameters.AddWithValue("@descripcion", t.descripcion);
+                        //cmd.Parameters.AddWithValue("@descripcion", t.descripcion);
                         cmd.Parameters.AddWithValue("@estado", t.estado);
 
                         cn.Open();

@@ -36,8 +36,7 @@ namespace C4_Persistencia
             trabajador.contrasena = resultado.GetString(10);
             tipo.idTipoTrabajador = resultado.GetInt32(11);
             tipo.nombre = resultado.GetString(12);
-            tipo.descripcion = resultado.GetString(13);
-            //trabajador.TipoTrabajador = tipo;
+            trabajador.tipoTrabajador = tipo;
             return trabajador;
         }
 
