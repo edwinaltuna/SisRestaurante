@@ -154,10 +154,7 @@
     <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MasterPage\Master.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Intranet\Principal.cshtml" />
+    <Content Include="Views\MasterPage\Master.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\C2_Aplicacion\C2_Aplicacion.csproj">
@@ -185,6 +182,9 @@
     <Content Include="Recursos\assets\material-design-iconic-font\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
     <Content Include="Recursos\assets\material-design-iconic-font\fonts\Material-Design-Iconic-Fontd1f1.woff" />
     <Content Include="Recursos\assets\material-design-iconic-font\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Intranet\Principal.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

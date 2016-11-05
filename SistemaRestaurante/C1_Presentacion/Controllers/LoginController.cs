@@ -31,13 +31,19 @@ namespace C1_Presentacion.Controllers
                 Trabajador trabajador =  GestionarTrabajadorService.Instancia.BuscarTrabajador(usuario, clave);
                 Session["Trabajador"] = trabajador;
                 return RedirectToAction("Principal", "Intranet");
-
             }
             catch (Exception e)
             {
                 ViewBag.mensaje = e.Message;
                 return View();
             }
+        }
+
+        public ActionResult CerrarSession()
+        {
+            Session.Clear();
+            Session.Remove("Trabajador");
+            return RedirectToAction("Login");
         }
     }
 }
