@@ -14,33 +14,33 @@ namespace C1_Presentacion.Controllers
         // GET: /TipoTrabajador/
 
         // GET: /Trabajador/
-        public ActionResult Index()
-        {
-            List<TipoTrabajador> lista = tipoTrabajadorNE.Instancia.ListarTipoTrabajadores();
-            return View(lista);
-        }
+        //public ActionResult Index()
+        //{
+        //    //List<TipoTrabajador> lista = GestionarTrabajadorService.Instancia.ListarTipoTrabajadores();
+        //    //return View(lista);
+        //}
 
 
 
-        [HttpGet]
-        public ActionResult Registrar()
-        {
+        //[HttpGet]
+        //public ActionResult Registrar()
+        //{
 
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Registrar(TipoTrabajador t)
-        {
-            Boolean registro = tipoTrabajadorNE.Instancia.RegistrarTipoTrabajador(t);
-            return RedirectToAction("DetallesAfterRegistro");
-        }
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Registrar(TipoTrabajador t)
+        //{
+        //    Boolean registro = tipoTrabajadorNE.Instancia.RegistrarTipoTrabajador(t);
+        //    return RedirectToAction("DetallesAfterRegistro");
+        //}
 
 
-        public ActionResult Detalles(Int16 id)
-        {
-            TipoTrabajador t = tipoTrabajadorNE.Instancia.ListarTipoTrabajadores(id);
-            return View(t);
-        }
+        //public ActionResult Detalles(Int16 id)
+        //{
+        //    TipoTrabajador t = tipoTrabajadorNE.Instancia.ListarTipoTrabajadores(id);
+        //    return View(t);
+        //}
 
 
     }
