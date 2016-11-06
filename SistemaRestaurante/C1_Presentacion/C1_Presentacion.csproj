@@ -138,6 +138,7 @@
     <Content Include="Recursos\css\style.css" />
     <Content Include="Recursos\img\avatar-2.jpg" />
     <Content Include="Recursos\img\favicon_1.ico" />
+    <Content Include="Recursos\img\mesa.jpg" />
     <Content Include="Recursos\js\bootstrap.min.js" />
     <Content Include="Recursos\js\jquery.app.js" />
     <Content Include="Recursos\js\jquery.js" />

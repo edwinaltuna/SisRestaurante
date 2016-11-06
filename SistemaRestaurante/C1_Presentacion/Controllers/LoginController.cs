@@ -30,7 +30,7 @@ namespace C1_Presentacion.Controllers
                 string clave = frm["txtpassword"].ToString();
                 Trabajador trabajador =  GestionarTrabajadorService.Instancia.BuscarTrabajador(usuario, clave);
                 Session["Trabajador"] = trabajador;
-                return RedirectToAction("Principal", "Intranet");
+                return RedirectToAction("Principal", "Intranet", new { id = trabajador.id});
             }
             catch (Exception e)
             {

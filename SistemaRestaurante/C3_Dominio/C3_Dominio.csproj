@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\AsignacionMesa.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\DetallePedido.cs" />
     <Compile Include="Entidades\Mesa.cs" />
