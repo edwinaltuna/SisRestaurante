@@ -19,7 +19,7 @@ namespace C4_Persistencia
 
 
         #region metodos
-        public List<Venta> Listar(int? idVenta=null)
+        public List<Venta> Listar(int idVenta)
         {
             SqlCommand command = new SqlCommand();
             List<Venta> listaVentas = new List<Venta>();
@@ -29,7 +29,7 @@ namespace C4_Persistencia
                 try
                 {
                     command = gestorDAOSQL.ObtenerComandoSP("SP_ListarVenta", conexionActual);
-                    command.Parameters.AddWithValue("@param_idVenta", idVenta != null ? idVenta : 0);
+                    command.Parameters.AddWithValue("@param_idVenta", idVenta);
                     SqlDataReader resultado = command.ExecuteReader();
                     while (resultado.Read())
                     {

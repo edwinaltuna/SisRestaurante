@@ -229,7 +229,6 @@
     <Content Include="Views\TipoTrabajador\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Recursos\assets\bootstrap3-editable\" />
     <Content Include="Views\TipoProducto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +236,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TipoProducto\Detalles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarVenta\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Recursos\assets\bootstrap3-editable\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
