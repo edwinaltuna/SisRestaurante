@@ -45,6 +45,7 @@
     <Compile Include="Entidades\Pedido.cs" />
     <Compile Include="Entidades\Persona.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\Reporte.cs" />
     <Compile Include="Entidades\TipoCliente.cs" />
     <Compile Include="Entidades\TipoProducto.cs" />
     <Compile Include="Entidades\TipoTrabajador.cs" />
