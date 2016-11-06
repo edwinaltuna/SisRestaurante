@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using C2_Aplicacion;
 using C3_Dominio.Entidades;
 using C4_Persistencia;
 
 namespace C2_Aplicacion
 {
-    public class tipoProductoNE
+    public class gestionarTipoProductoServices
     {
         #region Singleton
-        private static readonly tipoProductoNE _instancia = new tipoProductoNE();
-        public static tipoProductoNE Instancia
+        private static readonly gestionarTipoProductoServices _instancia = new gestionarTipoProductoServices();
+        public static gestionarTipoProductoServices Instancia
         {
-            get { return tipoProductoNE._instancia; }
+            get { return gestionarTipoProductoServices._instancia; }
         }
         #endregion Singleton
         #region methods
 
-        public List<TipoProducto> ListarTipoTrabajadores()
+        public List<TipoProducto> ListarTipoProductos()
         {
             try
             {
@@ -34,7 +33,7 @@ namespace C2_Aplicacion
         }
 
 
-        public Boolean RegistrarTipoTrabajador(TipoTrabajador t)
+        public Boolean RegistrarTipoTrabajador(TipoProducto t)
         {
             try
             {
