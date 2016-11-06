@@ -10,30 +10,31 @@ using C4_Persistencia;
 
 namespace C2_Aplicacion
 {
-    public class gestionarMesaServices
+    public class gestionarReporteServices
     {
         #region Singleton
-        public static readonly gestionarMesaServices _instancia = new gestionarMesaServices();
-        public static gestionarMesaServices Instancia { get { return gestionarMesaServices._instancia; } }
+        public static readonly gestionarReporteServices _instancia = new gestionarReporteServices();
+        public static gestionarReporteServices Instancia { get { return gestionarReporteServices._instancia; } }
         #endregion
 
 
         private GestorDAOSQL gestorDAOSQL;
-        private MesaSQL mesaDAO;
+        private ReporteSQL reporteDAO;
 
-        public gestionarMesaServices()
+        public gestionarReporteServices()
         {
             gestorDAOSQL = new GestorDAOSQL();
-            mesaDAO = new MesaSQL(gestorDAOSQL);
+            reporteDAO = new ReporteSQL(gestorDAOSQL);
         }
 
+
         #region Metodos
-        public List<Mesa> ListarMesa(Int32 idTrabajador)
+        public List<Venta> ListarVenta(DateTime FechaInicio, DateTime FechaFin)
         {
             try
             {
                 gestorDAOSQL.abrirConexion();
-                List<Mesa> listarMesa = mesaDAO.ListarMesa(idTrabajador);
+                List<Venta> listarMesa = reporteDAO.ListarVenta(FechaInicio, FechaFin);
                 gestorDAOSQL.cerrarConexion();
                 return listarMesa;
             }
@@ -47,5 +48,7 @@ namespace C2_Aplicacion
             }
         }
         #endregion
+
+
     }
 }
