@@ -40,7 +40,7 @@ namespace C4_Persistencia
                         t.idTipoTrabajador = Convert.ToInt16(dr["id"]);
                         t.nombre = dr["nombre"].ToString();
                         //t.descripcion = dr["dni"].ToString();
-                        t.estado = Convert.ToBoolean(dr["id"]);
+                        t.estado = Convert.ToBoolean(dr["estado"]);
                         listarTipoTrabajador.Add(t);
                     }
                 }
