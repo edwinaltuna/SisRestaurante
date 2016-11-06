@@ -45,7 +45,6 @@
     <Compile Include="ReporteDAO.cs" />
     <Compile Include="TipoTrabajadorDA.cs" />
     <Compile Include="TrabajadorSQL.cs" />
-    <Compile Include="VentaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">
