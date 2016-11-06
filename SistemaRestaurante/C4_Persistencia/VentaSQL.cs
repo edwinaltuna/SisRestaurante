@@ -49,7 +49,12 @@ namespace C4_Persistencia
         {
             Venta tempVenta = new Venta();
             tempVenta.serieNumero = resultado["numeroSerie"].ToString();
-            //tempVenta.
+            tempVenta.estado = int.Parse(resultado["estado"].ToString());
+            tempVenta.fecha = DateTime.Parse(resultado["fecha"].ToString());
+            TipoTrabajador tipoTrabajador = new TipoTrabajador();
+            tipoTrabajador.nombre = resultado["tipoTrabajadorNombre"].ToString();
+            tempVenta.total = float.Parse(resultado["totalPedido"].ToString());
+           
             return tempVenta;
         }
 

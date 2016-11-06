@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using C3_Dominio.Entidades;
 
 namespace C2_Aplicacion
 {
@@ -21,6 +22,19 @@ namespace C2_Aplicacion
         {
             gestorDAOSQL = new GestorDAOSQL();
 
+        }
+
+        public List<Venta> Listar(int? idVenta = null)
+        {
+            try
+            {
+                return ventaSQL.Listar(idVenta != null ? (int)idVenta : -1);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
