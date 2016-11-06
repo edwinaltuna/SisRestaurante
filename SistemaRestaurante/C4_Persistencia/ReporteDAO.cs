@@ -53,7 +53,7 @@ namespace C4_Persistencia
                 }  
                return(list);
            }
-           catch (Exception e)
+           catch (Exception)
            {
                throw;
            }
