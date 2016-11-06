@@ -8,13 +8,13 @@ using C4_Persistencia;
 
 namespace C2_Aplicacion
 {
-    public class gestionarProductoServices
+    public class gestionarTipoProductoServices
     {
         #region Singleton
-        private static readonly gestionarProductoServices _instancia = new gestionarProductoServices();
-        public static gestionarProductoServices Instancia
+        private static readonly gestionarTipoProductoServices _instancia = new gestionarTipoProductoServices();
+        public static gestionarTipoProductoServices Instancia
         {
-            get { return gestionarProductoServices._instancia; }
+            get { return gestionarTipoProductoServices._instancia; }
         }
         #endregion Singleton
         #region methods
