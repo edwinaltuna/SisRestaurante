@@ -113,6 +113,7 @@
     <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\TipoProductoController.cs" />
     <Compile Include="Controllers\TipoTrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +230,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\assets\bootstrap3-editable\" />
+    <Content Include="Views\TipoProducto\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoProducto\Registrar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoProducto\Detalles.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
