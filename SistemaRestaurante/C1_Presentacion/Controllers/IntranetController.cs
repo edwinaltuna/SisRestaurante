@@ -15,7 +15,7 @@ namespace C1_Presentacion.Controllers
         //
         // GET: /Intranet/
         [HttpGet]
-        public ActionResult Principal(Int32 id)
+        public ActionResult Principal(int id)
         {
             List<Mesa> lista = gestionarMesaServices.Instancia.ListarMesa(id);
             return View(lista);
