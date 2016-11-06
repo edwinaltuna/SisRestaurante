@@ -10,13 +10,13 @@ using System.Data;
 
 namespace C4_Persistencia
 {
-    public class TipoTrabajadorSQL
+    public class TipoTrabajadorDA
     {
         #region Singleton
-        private static readonly TipoTrabajadorSQL _instancia = new TipoTrabajadorSQL();
-        public static TipoTrabajadorSQL Instancia
+        private static readonly TipoTrabajadorDA _instancia = new TipoTrabajadorDA();
+        public static TipoTrabajadorDA Instancia
         {
-            get { return TipoTrabajadorSQL._instancia; }
+            get { return TipoTrabajadorDA._instancia; }
         }
         #endregion Singleton
 
