@@ -64,7 +64,7 @@ namespace C4_Persistencia
                 {
                     cmd = new SqlCommand("detallesTipoProducto", cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("in_id", id);
+                    cmd.Parameters.AddWithValue("id", id);
                     cn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
@@ -86,7 +86,7 @@ namespace C4_Persistencia
 
         }
 
-        public Boolean RegistrarTipoTrabajador(TipoProducto t)
+        public Boolean RegistrarTipoProducto(TipoProducto t)
         {
             Boolean inserto = false;
 
