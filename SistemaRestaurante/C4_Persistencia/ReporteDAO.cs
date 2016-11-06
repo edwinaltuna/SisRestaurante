@@ -8,7 +8,7 @@ using C3_Dominio;
 using C3_Dominio.Entidades;
 
 namespace C4_Persistencia
-{
+{//TYRTYRTY
    public  class ReporteDAO
     {
        private GestorDAOSQL gestorDAOSQL;
