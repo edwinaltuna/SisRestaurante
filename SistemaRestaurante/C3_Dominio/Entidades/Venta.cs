@@ -13,6 +13,7 @@ namespace C3_Dominio.Entidades
         public Pedido pedido { get; set; }
         public int estado { get; set; }
         public DateTime fecha { get; set; }
+        public Trabajador trabajador { get; set; }
 
         public float total { get; set; }
 

@@ -41,7 +41,7 @@ namespace C4_Persistencia
                 {
                     throw;
                 }
-               
+
             }
         }
 
@@ -51,10 +51,16 @@ namespace C4_Persistencia
             tempVenta.serieNumero = resultado["numeroSerie"].ToString();
             tempVenta.estado = int.Parse(resultado["estado"].ToString());
             tempVenta.fecha = DateTime.Parse(resultado["fecha"].ToString());
+            tempVenta.total = float.Parse(resultado["totalPedido"].ToString());
             TipoTrabajador tipoTrabajador = new TipoTrabajador();
             tipoTrabajador.nombre = resultado["tipoTrabajadorNombre"].ToString();
-            tempVenta.total = float.Parse(resultado["totalPedido"].ToString());
-           
+            Trabajador trabajador = new Trabajador();
+            trabajador.tipoTrabajador = tipoTrabajador;
+            trabajador.nombres = resultado["nombre"].ToString();
+            trabajador.apellidoPaterno = resultado["apellidoPaterno"].ToString();
+            trabajador.apellidoMaterno = resultado["apellidoMaterno"].ToString();
+            tempVenta.trabajador = trabajador;
+            
             return tempVenta;
         }
 
