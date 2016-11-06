@@ -61,7 +61,7 @@ namespace C4_Persistencia
             {
                 using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
                 {
-                    cmd = new SqlCommand("sp_trabajador_listarXId", cn);
+                    cmd = new SqlCommand("detallesTipoTrabajador", cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("in_id", id);
                     cn.Open();
@@ -91,7 +91,7 @@ namespace C4_Persistencia
 
             using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
             {
-                using (SqlCommand cmd = new SqlCommand("sp_trabajador_Registrar", cn))
+                using (SqlCommand cmd = new SqlCommand("insertarTipoTrabajador", cn))
                 {
                     try
                     {
