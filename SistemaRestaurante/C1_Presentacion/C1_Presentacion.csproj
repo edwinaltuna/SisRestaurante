@@ -110,6 +110,8 @@
   <ItemGroup>
     <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\TipoTrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -120,6 +122,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Recursos\assets\c3-chart\c3-chart.init.js" />
+    <Content Include="Recursos\assets\c3-chart\c3.css" />
+    <Content Include="Recursos\assets\c3-chart\c3.js" />
+    <Content Include="Recursos\assets\c3-chart\d3.v3.min.js" />
     <Content Include="Recursos\assets\font-awesome\css\font-awesome.css" />
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfonte0a5.svg" />
     <Content Include="Recursos\assets\ionicon\css\ionicons.min.css" />
@@ -186,6 +192,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Intranet\Principal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reportes\ReportesdeVenta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoTrabajador\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoTrabajador\Registrar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoTrabajador\Detalles.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
