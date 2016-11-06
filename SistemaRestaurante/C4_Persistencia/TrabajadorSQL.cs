@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using C3_Dominio;
 using C3_Dominio.Entidades;
 
+//a
 namespace C4_Persistencia
 {
     public class TrabajadorSQL
