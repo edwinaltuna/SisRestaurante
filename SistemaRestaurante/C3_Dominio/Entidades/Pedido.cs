@@ -26,6 +26,16 @@ namespace C3_Dominio.Entidades
             return totalCalculado;
         }    
 
+        public float calcularIgv()
+        {
+            float igv = 0f;
+            foreach(DetallePedido detalle in detallesPedido)
+            {
+                igv += detalle.IGV;
+            }
+            return igv;
+        }
+
         public void agregarDetallePedido(DetallePedido detalleNuevo)
         {
             detallesPedido.Add(detalleNuevo);

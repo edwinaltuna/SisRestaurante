@@ -6,19 +6,26 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio.Entidades
 {
-   public class DetallePedido
+    public class DetallePedido
     {
-       public int id {get; set; }
-       public int cantidad {get;set; }
-       public string descripcion {get;set; }
-       public bool estado {get;set; }
-       public Producto producto {get;set; }
+        public int id { get; set; }
+        public int cantidad { get; set; }
+        public string descripcion { get; set; }
+        public bool estado { get; set; }
+        public Producto producto { get; set; }
+        public float IGV { get; set; }
+        public float subtotal { get; set; }
 
-       #region metodos
-       public double calcularSubTotal()
-       {
-           return cantidad * producto.precio;
-       }
-       #endregion metodos
+        #region metodos
+        public double calcularSubTotal()
+        {
+            return cantidad * producto.precio;
+        }
+
+        public void calcularIGV(float actual)
+        {
+            IGV = subtotal * (actual / 100) ;
+        }
+        #endregion metodos
     }
 }
