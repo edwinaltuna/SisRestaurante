@@ -24,7 +24,7 @@ namespace C2_Aplicacion
         {
             try
             {
-                return TipoTrabajadorDA.Instancia.ListarTrabajadores();
+                return TipoTrabajadorSQL.Instancia.ListarTrabajadores();
             }
             catch (Exception)
             {
@@ -38,7 +38,7 @@ namespace C2_Aplicacion
         {
             try
             {
-                return TipoTrabajadorDA.Instancia.RegistrarTipoTrabajador(t);
+                return TipoTrabajadorSQL.Instancia.RegistrarTipoTrabajador(t);
             }
             catch (Exception)
             {
@@ -53,7 +53,7 @@ namespace C2_Aplicacion
         {
             try
             {
-                return TipoTrabajadorDA.Instancia.ListarTrabajadorPorId(id);
+                return TipoTrabajadorSQL.Instancia.ListarTrabajadorPorId(id);
             }
             catch (Exception)
             {
