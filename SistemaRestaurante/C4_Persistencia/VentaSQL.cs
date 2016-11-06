@@ -16,13 +16,43 @@ namespace C4_Persistencia
             this.gestorDAOSQL = gestorDAOSQL;
         }
 
-        public List<Venta> Listar()
+
+
+        #region metodos
+        public List<Venta> Listar(int? idVenta=null)
         {
+            SqlCommand command = new SqlCommand();
+            List<Venta> listaVentas = new List<Venta>();
             using (SqlConnection conexionActual = gestorDAOSQL.abrirConexion())
             {
-                
+                conexionActual.Open();
+                try
+                {
+                    command = gestorDAOSQL.ObtenerComandoSP("SP_ListarVenta", conexionActual);
+                    command.Parameters.AddWithValue("@param_idVenta", idVenta != null ? idVenta : 0);
+                    SqlDataReader resultado = command.ExecuteReader();
+                    while (resultado.Read())
+                    {
+                        listaVentas.Add(construirObjetoVenta(resultado));
+                    }
+                    return listaVentas;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+               
             }
-            return new List<Venta>();
         }
+
+        private Venta construirObjetoVenta(SqlDataReader resultado)
+        {
+            Venta tempVenta = new Venta();
+            tempVenta.serieNumero = resultado["numeroSerie"].ToString();
+            //tempVenta.
+            return tempVenta;
+        }
+
+        #endregion metodos
     }
 }

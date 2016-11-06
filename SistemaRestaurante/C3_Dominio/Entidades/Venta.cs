@@ -15,6 +15,10 @@ namespace C3_Dominio.Entidades
        private int numero = 0;
        public string serieNumero 
        {
+            set
+            {
+                serieNumero = value;
+            }
            get
            {
                calcularSiguienteSerie(serie);
