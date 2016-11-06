@@ -42,6 +42,7 @@
     <Compile Include="gestionarMesaServices.cs" />
     <Compile Include="gestionarTrabajadorServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoProductoNE.cs" />
     <Compile Include="TipoTrabajadorNE.cs" />
   </ItemGroup>
   <ItemGroup>
