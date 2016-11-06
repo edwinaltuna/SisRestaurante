@@ -1,4 +1,7 @@
-﻿@{C3_Dominio.Entidades.Trabajador t = (C3_Dominio.Entidades.Trabajador)Session["trabajador"];}
+﻿@using C3_Dominio.Entidades
+@{
+    Trabajador t = (Trabajador)Session["trabajador"];
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +46,12 @@
         <!-- Navbar Start -->
         <nav class="navigation">
             <ul class="list-unstyled">
-                <li class=""><a href="index.html"><i class="zmdi zmdi-view-dashboard"></i> <span class="nav-label">Dashboard</span></a></li>
+                <li class="">
+                    <a href="@Url.Action("Listar","GestionarVenta")">
+                        <i class="zmdi zmdi-view-dashboard"></i> 
+                        <span class="nav-label">Gestionar Venta</span>
+                    </a>
+                </li>
                 <li class="has-submenu">
                     <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">Configuracion</span><span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
