@@ -38,8 +38,8 @@ namespace C4_Persistencia
                     while (dr.Read())
                     {
                         TipoProducto t = new TipoProducto();
-                        t.id = Convert.ToInt16(dr["id"]);
-                        t.descripcion = dr["nombre"].ToString();
+                        t.id = Convert.ToInt16(dr["idTipoProducto"]);
+                        t.descripcion = dr["descripcion"].ToString();
                         //t.descripcion = dr["dni"].ToString();
                         t.estado = Convert.ToBoolean(dr["estado"]);
                         listarTipoProducto.Add(t);
