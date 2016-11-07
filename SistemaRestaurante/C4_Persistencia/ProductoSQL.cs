@@ -114,7 +114,6 @@ namespace C4_Persistencia
                     if (dr.Read())
                     {
                         p = new Producto();
-                        p.id = Convert.ToInt32(dr["id"]);
                         p.precio = Convert.ToDouble(dr["descripcion"]);
                         p.descripcion = dr["descripcion"].ToString();
                         p.fecha = Convert.ToDateTime(dr["fecha"]);
