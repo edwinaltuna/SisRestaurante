@@ -129,7 +129,7 @@
     <Content Include="Imagenes\gelatina.png" />
     <Content Include="Imagenes\ocopa.png" />
     <Content Include="Imagenes\pisco.png" />
-    <Content Include="Imagenes\tallarín.png" />
+    <Content Include="Imagenes\tallarin.png" />
     <Content Include="Recursos\assets\c3-chart\c3-chart.init.js" />
     <Content Include="Recursos\assets\c3-chart\c3.css" />
     <Content Include="Recursos\assets\c3-chart\c3.js" />
