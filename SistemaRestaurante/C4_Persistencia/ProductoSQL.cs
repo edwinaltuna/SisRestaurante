@@ -98,7 +98,7 @@ namespace C4_Persistencia
             
         }
 
-        public Producto ListarProductoPorId(Int16 id)
+        public Producto ListarProductoPorId(int id)
         {
             SqlCommand cmd = null;
             Producto p = null;
@@ -114,7 +114,6 @@ namespace C4_Persistencia
                     if (dr.Read())
                     {
                         p = new Producto();
-                        p.id = Convert.ToInt16(dr["id"]);
                         p.precio = Convert.ToDouble(dr["descripcion"]);
                         p.descripcion = dr["descripcion"].ToString();
                         p.fecha = Convert.ToDateTime(dr["fecha"]);
@@ -127,12 +126,14 @@ namespace C4_Persistencia
 
                     }
                 }
-                return p;
+                
             }
             catch (Exception e)
             {
                 throw e;
             }
+            finally { cmd.Connection.Close(); }
+            return p;
 
         }
 

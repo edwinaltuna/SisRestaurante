@@ -44,6 +44,44 @@ namespace C2_Aplicacion
                 throw;
             }
         }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                return ProductoSQL.Instancia.Delete(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool Update(Producto producto)
+        {
+            try
+            {
+                return ProductoSQL.Instancia.EditarProducto(producto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public Producto DetallesPlato(int id)
+        {
+            try
+            {
+                return ProductoSQL.Instancia.ListarProductoPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         #endregion
     }
 }
