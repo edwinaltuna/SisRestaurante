@@ -1,4 +1,4 @@
-﻿@model List<C3_Dominio.Entidades.Mesa>
+﻿@model List<C3_Dominio.Entidades.Producto>
 @{
     ViewBag.Title = "ListarProducto";
     Layout = "~/Views/MasterPage/Master.cshtml";
@@ -14,7 +14,7 @@
     </div>
     <div class="panel-body">
         <div class="form-group">
-            <table style="width:100%">
+            <table id="datatable" style="width:100%">
                 @{
                     int numceldas = 0;
                     foreach (var m in Model)
@@ -25,12 +25,22 @@
                         }
                         numceldas++;
                         <td align="center" width="25%">
-                            <a href="@Url.Action("ValidarMesa", "Intranet", new { id = @m.id })"><img src="~/Recursos/img/mesa.jpg" style="width:100px; height:100px" /> </a>
-
+                            <img src="~/Recursos/Imagenes/Productos/@m.imagen" style="width:100px; height:100px" />
                             <h3 style="color:gray; font-family:Arial; font-size: 12px">
-                                Numero mesa:@m.numero
+                                Nombre:@m.descripcion
                             </h3>
+                            <h3 style="color:gray; font-family:Arial; font-size: 12px">
+                                Detalle:@m.precio
+                            </h3>
+                            <form method="post" action="AgregarGuia/GuiarecepcionController">
+                                <input type="hidden" name="txtNombre" value="@m.descripcion" />
+                                <input type="hidden" name="txtDescripcion" value="@m.precio" />
+                                <input type="hidden" name="txtObservacion"  />
+                                <input type="hidden" name="txtidProducto" value="@m.id" />
 
+                                <input type="text" name="txtCant" value="1" style="width:30px" />
+                                <button class="btn btn-sm btn-success" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
+                            </form>
                         </td>
                         if (numceldas == 4)
                         {
@@ -43,3 +53,33 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+
+    <script src="~/Recursos/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Recursos/assets/datatables/buttons.bootstrap.min.js"></script>
+    <script src="~/Recursos/assets/datatables/jszip.min.js"></script>
+    <script src="~/Recursos/assets/datatables/pdfmake.min.js"></script>
+    <script src="~/Recursos/assets/datatables/vfs_fonts.js"></script>
+    <script src="~/Recursos/assets/datatables/buttons.html5.min.js"></script>
+    <script src="~/Recursos/assets/datatables/buttons.print.min.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Recursos/assets/datatables/responsive.bootstrap.min.js"></script>
+    <script src="~/Recursos/assets/datatables/dataTables.scroller.min.js"></script>
+    <script src="~/Recursos/js/datatables.init.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable({
+                "language": {
+                    "url": '../Recursos/lang/Spanish.json'
+                }
+            });
+        });
+        TableManageButtons.init();
+    </script>
+}

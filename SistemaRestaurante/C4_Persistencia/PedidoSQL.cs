@@ -22,11 +22,12 @@ namespace C4_Persistencia
             Producto producto;
             producto = new Producto();
             producto.id = resultado.GetInt32(0);
-            producto.descripcion = resultado.GetString(1);
-            producto.fecha = resultado.GetDateTime(2);
-            producto.imagen = resultado.GetString(3);
+            producto.precio = Convert.ToDouble(resultado.GetDecimal(1));
+            producto.descripcion = resultado.GetString(2);
+            producto.fecha = resultado.GetDateTime(3);
+            producto.imagen = resultado.GetString(4);
             TipoProducto tipo = new TipoProducto();
-            tipo.id = resultado.GetInt32(4);
+            tipo.id = resultado.GetInt32(5);
             producto.tipoProducto = tipo;
             return producto;
         }
