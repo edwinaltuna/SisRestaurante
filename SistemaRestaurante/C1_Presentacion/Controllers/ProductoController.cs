@@ -43,6 +43,55 @@ namespace C1_Presentacion.Controllers
             return RedirectToAction("Index", "TipoProducto");
         }
 
+        public ActionResult Details(Int16 id)
+        {
+            return View(obj.DetallesPlato(id));
+        }
+
+        public ActionResult Edit(Int16 id)
+        {
+            return View(obj.DetallesPlato(id));
+        }
+
+        // POST: Estudiante/Edit/5
+        [HttpPost]
+        public ActionResult Edit(Producto collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                Producto objPlato = new Producto();
+                obj.Update(collection);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Estudiante/Delete/5
+        public ActionResult Delete(Int16 id)
+        {
+            return View(obj.DetallesPlato(id));
+        }
+
+        // POST: Estudiante/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                obj.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
 //aa
