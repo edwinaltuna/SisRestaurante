@@ -126,6 +126,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\Gelatina.png" />
+    <Content Include="Imagenes\Ocopa.png" />
+    <Content Include="Imagenes\Pisco.png" />
+    <Content Include="Imagenes\Tallarín.png" />
     <Content Include="Recursos\assets\c3-chart\c3-chart.init.js" />
     <Content Include="Recursos\assets\c3-chart\c3.css" />
     <Content Include="Recursos\assets\c3-chart\c3.js" />
