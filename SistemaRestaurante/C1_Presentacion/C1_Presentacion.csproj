@@ -130,6 +130,12 @@
     <Content Include="Imagenes\ocopa.png" />
     <Content Include="Imagenes\pisco.png" />
     <Content Include="Imagenes\tallarin.png" />
+    <Content Include="Recursos\assets\bootstrap3-editable\bootstrap-editable.css" />
+    <Content Include="Recursos\assets\bootstrap3-editable\bootstrap-editable.js" />
+    <Content Include="Recursos\assets\bootstrap3-editable\clear.png" />
+    <Content Include="Recursos\assets\bootstrap3-editable\demo-xeditable.js" />
+    <Content Include="Recursos\assets\bootstrap3-editable\loading.gif" />
+    <Content Include="Recursos\assets\bootstrap3-editable\moment.min.js" />
     <Content Include="Recursos\assets\c3-chart\c3-chart.init.js" />
     <Content Include="Recursos\assets\c3-chart\c3.css" />
     <Content Include="Recursos\assets\c3-chart\c3.js" />
@@ -251,9 +257,7 @@
   <ItemGroup>
     <Content Include="Views\GestionarVenta\Listar.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Recursos\assets\bootstrap3-editable\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Recursos\lang\Spanish.json" />
   </ItemGroup>
