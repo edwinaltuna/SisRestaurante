@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C3_Dominio.Entidades
 {
-    public class Venta
+   public class Venta
     {
         public int id { get; set; }
         public TipoVenta tipoVenta { get; set; }
@@ -18,7 +18,9 @@ namespace C3_Dominio.Entidades
         public float total { get; set; }
 
         private int serie = 0;
+
         private int numero = 0;
+        public int cantidad { get; set; } //reportes
         public string serieNumero;
         public string SerieNumero
         {
@@ -26,26 +28,26 @@ namespace C3_Dominio.Entidades
             {
                 serieNumero = value;
             }
-            get
-            {
-                calcularSiguienteSerie(serie);
-                calcularSiguienteNumero(numero);
-                return serie.ToString("3D") + " - " + numero.ToString("10D");
-            }
-        }
+           get
+           {
+               calcularSiguienteSerie(serie);
+               calcularSiguienteNumero(numero);
+               return serie.ToString("3D") + " - " + numero.ToString("10D");
+           }
+       }
 
-        #region metodos
-        public void calcularSiguienteSerie(int serie)
-        {
+       #region metodos
+       public void calcularSiguienteSerie(int serie)
+       {
             this.serie = serie + 1;
-            //TODO: algoritmo para calcular serie 
-        }
+           //TODO: algoritmo para calcular serie 
+       }
 
-        public void calcularSiguienteNumero(int numero)
-        {
+       public void calcularSiguienteNumero(int numero)
+       {
             this.numero = numero + 1;
             //TODO: algoritmo para calcular serie 
-        }
-        #endregion metodos
+       }
+       #endregion metodos
     }
 }

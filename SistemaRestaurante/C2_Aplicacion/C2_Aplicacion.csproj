@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gestionarMesaServices.cs" />
+    <Compile Include="gestionarReporteServices.cs" />
     <Compile Include="gestionarTrabajadorServices.cs" />
     <Compile Include="gestionarVentaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
