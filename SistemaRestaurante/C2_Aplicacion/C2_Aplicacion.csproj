@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="gestionarMesaServices.cs" />
     <Compile Include="gestionarPedidoServices.cs" />
+    <Compile Include="gestionarProductoServices.cs" />
     <Compile Include="gestionarReporteServices.cs" />
     <Compile Include="gestionarTrabajadorServices.cs" />
     <Compile Include="gestionarVentaServices.cs" />

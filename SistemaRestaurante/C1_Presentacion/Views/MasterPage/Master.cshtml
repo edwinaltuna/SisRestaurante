@@ -46,11 +46,24 @@
         <!-- Navbar Start -->
         <nav class="navigation">
             <ul class="list-unstyled">
-                <li class="">
-                    <a href="@Url.Action("Listar","GestionarVenta")">
+                <li class="has-submenu">
+                    <a href="#">
                         <i class="zmdi zmdi-view-dashboard"></i> 
+                        
                         <span class="nav-label">Gestionar Venta</span>
                     </a>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href=@Url.Action("Crear","GestionarVenta")>
+                                <i class="zmdi zmdi-plus-circle"></i> Nueva Venta
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Listar","GestionarVenta")">
+                                <i class="ion-ios7-glasses-outline"></i> Mostrar Ventas
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">Configuracion</span><span class="menu-arrow"></span></a>
