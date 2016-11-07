@@ -50,12 +50,16 @@
                                                         <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id)" ><span class="label label-danger"><text>Anulado</text></span></a> break;
                                                     case 1:
                                                         <input type="hidden" id="estado_venta_@venta.id" value="@venta.estado" />
-                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id)" ><span class="label label-success"><text>Activo</text></span></a> break;
+                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id)"><span class="label label-success"><text>Activo</text></span></a> break;
                                                 }
                                                 
                                             
                                         </td>
-                                        <td>UWU</td>
+                                        <td>
+                                            <a href="#" id="modal_venta_trigger_@venta.id">
+                                                <i class="zmdi zmdi-eye"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                         }
                                     }

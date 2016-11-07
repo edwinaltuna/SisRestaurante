@@ -70,7 +70,7 @@ namespace C2_Aplicacion
 
         }
 
-        public Producto DetallesPlato(Int16 id)
+        public Producto DetallesPlato(int id)
         {
             try
             {

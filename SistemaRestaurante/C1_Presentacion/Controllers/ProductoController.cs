@@ -43,12 +43,12 @@ namespace C1_Presentacion.Controllers
             return RedirectToAction("Index", "TipoProducto");
         }
 
-        public ActionResult Details(Int16 id)
+        public ActionResult Details(int id)
         {
             return View(obj.DetallesPlato(id));
         }
 
-        public ActionResult Edit(Int16 id)
+        public ActionResult Edit(int id)
         {
             return View(obj.DetallesPlato(id));
         }
@@ -71,7 +71,7 @@ namespace C1_Presentacion.Controllers
         }
 
         // GET: Estudiante/Delete/5
-        public ActionResult Delete(Int16 id)
+        public ActionResult Delete(int id)
         {
             return View(obj.DetallesPlato(id));
         }
