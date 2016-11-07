@@ -76,11 +76,10 @@ namespace C4_Persistencia
 
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@precio", p.precio);
-
                         cmd.Parameters.AddWithValue("@descripcion", p.descripcion);
                         cmd.Parameters.AddWithValue("@fecha", p.fecha);
                         cmd.Parameters.AddWithValue("@imagen", p.imagen);
-                        cmd.Parameters.AddWithValue("@@idTipoProducto", p.tipoProducto.id);
+                        cmd.Parameters.AddWithValue("@idTipoProducto", p.tipoProducto.id);
                         cmd.Parameters.AddWithValue("@estado", p.estado);
 
                         cn.Open();

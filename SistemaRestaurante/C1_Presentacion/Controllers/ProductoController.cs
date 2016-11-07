@@ -23,6 +23,26 @@ namespace C1_Presentacion.Controllers
             return View(listProducto);
         }
 
+        public ActionResult Registrar()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Registrar(FormCollection form)
+        {
+            data.id = Int32.Parse(form["id"].ToString());
+            data.precio = Double.Parse(form["precio"].ToString());
+            data.descripcion = form["descripcion"];
+            data.fecha = DateTime.Parse(form["fecha"].ToString());
+            data.imagen = form["imagen"];
+            data.estado = Boolean.Parse(form["estado"].ToString());
+            data.tipoProducto.id = Int32.Parse(form["idTipoProducto"].ToString());
+
+            obj.RegistrarProducto(data);
+            return RedirectToAction("Index", "TipoProducto");
+        }
+
     }
 }
 //aa
