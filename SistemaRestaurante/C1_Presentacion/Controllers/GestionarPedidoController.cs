@@ -12,9 +12,6 @@ namespace C1_Presentacion.Controllers
 {
     public class GestionarPedidoController : Controller
     {
-        //
-        // GET: /GestionarPedido/
-
         public ActionResult ListarProducto()
         {
             try {
