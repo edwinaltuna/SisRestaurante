@@ -41,7 +41,7 @@
                                         <td>@venta.trabajador.tipoTrabajador.nombre</td>
                                         <td>@venta.trabajador.generarNombreCompleto()</td>
                                         <td>@venta.total</td>
-                                        <td id="td_venta_@venta.id">
+                                        <td id="td_venta_@venta.id" class="dt[-head|-body]-center">
                                             
                                                 @switch (venta.estado)
                                                 {
@@ -104,7 +104,10 @@
         $('#datatable').dataTable({
             "language": {
                 "url": '../Recursos/lang/Spanish.json'
-            }
+            },
+            "columnDefs": [
+                { "className": "dt-center", "targets": 0 }
+            ]
         });
 
     });
