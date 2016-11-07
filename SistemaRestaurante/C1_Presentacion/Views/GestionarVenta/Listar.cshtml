@@ -27,6 +27,8 @@
                                         <th>Puesto</th>
                                         <th>Nombres</th>
                                         <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,6 +41,19 @@
                                         <td>@venta.trabajador.tipoTrabajador.nombre</td>
                                         <td>@venta.trabajador.generarNombreCompleto()</td>
                                         <td>@venta.total</td>
+                                        <td>
+                                            
+                                                @switch (venta.estado)
+                                                {
+                                                    case 0:
+                                                        <span class="label label-danger"><text>Anulado</text></span> break;
+                                                    case 1:
+                                                        <span class="label label-success"><text>Activo</text></span> break;
+                                                }
+                                                
+                                            
+                                        </td>
+                                        <td>UWU</td>
                                     </tr>
                                         }
                                     }
@@ -81,11 +96,11 @@
 <script type="text/javascript">
             $(document).ready(function() {
                 $('#datatable').dataTable();
-                //$('#datatable-keytable').DataTable( { keys: true } );
-                //$('#datatable-responsive').DataTable();
-                //$('#datatable-scroller').DataTable( { ajax: "assets/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
-                //var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
-            } );
-            TableManageButtons.init();
+                                                        //$('#datatable-keytable').DataTable( { keys: true } );
+                                                        //$('#datatable-responsive').DataTable();
+                                                        //$('#datatable-scroller').DataTable( { ajax: "assets/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
+                                                        //var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+                                                    } );
+                                                    TableManageButtons.init();
 </script>
 }
