@@ -19,7 +19,7 @@ namespace C2_Aplicacion
         #endregion Singleton
         #region methods
 
-        public List<Producto> ListarTipoProductos()
+        public List<Producto> ListarProductos()
         {
             try
             {
