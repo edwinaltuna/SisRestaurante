@@ -55,6 +55,28 @@ namespace C4_Persistencia
                 throw ex;
             }
         }
+
+        public Mesa ValidarMesa(int idMesa)
+        {
+            Mesa mesa = null;
+            try
+            {
+                using(SqlConnection conexion = GestorDAOSQL.Instancia.abrirConexion()){
+                    conexion.Open();
+                    SqlCommand cmd = GestorDAOSQL.Instancia.ObtenerComandoSP("sp_ValidarMesa", conexion);
+                    cmd.Parameters.AddWithValue("@idmesa", idMesa);
+                    SqlDataReader resultado = cmd.ExecuteReader();
+                    if (resultado.Read())
+                    {
+                        mesa = crearObjetoMesa(resultado);
+                    }
+                    resultado.Close();
+                }
+                return mesa;
+            }catch(Exception e){
+                throw e;
+            }
+        }
         #endregion
     }
 }

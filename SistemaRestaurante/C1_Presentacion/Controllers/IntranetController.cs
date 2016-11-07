@@ -17,9 +17,37 @@ namespace C1_Presentacion.Controllers
         [HttpGet]
         public ActionResult Principal(Int32 id)
         {
+            try { 
             List<Mesa> lista = gestionarMesaServices.Instancia.ListarMesa(id);
             return View(lista);
+            }
+            catch (Exception e)
+            {
+                ViewBag.mensaje = e.Message;
+                return View();
+            }
         }
+
+        public ActionResult ValidarMesa(int id)
+        {
+            try
+            {
+                Mesa mesa = gestionarMesaServices.Instancia.ValidarMesa(id);
+                if (mesa.estado == false) {
+                    return RedirectToAction("ListarProducto", "GestionarPedido");
+                }
+                else
+                {
+                    return RedirectToAction("VerPedido", "GestionarPedido", new { mesa.id });
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.mensaje = e.Message;
+                return View();
+            }
+        }
+
 
     }
 }

@@ -31,9 +31,7 @@ namespace C2_Aplicacion
         {
             try
             {
-                gestorDAOSQL.abrirConexion();
                 List<Mesa> listarMesa = mesaDAO.ListarMesa(idTrabajador);
-                gestorDAOSQL.cerrarConexion();
                 return listarMesa;
             }
             catch (Exception e)
@@ -41,6 +39,24 @@ namespace C2_Aplicacion
                 if (e.GetType().IsAssignableFrom(typeof(SqlConnection)))
                 {
                     throw new ApplicationException("Error de conexion a la Bd");
+                }
+                throw e;
+            }
+        }
+
+        public Mesa ValidarMesa(int idMesa)
+        {
+            try
+            {
+                Mesa mesa = null;
+                mesa = mesaDAO.ValidarMesa(idMesa);
+                return mesa;
+            }
+            catch (Exception e)
+            {
+                if (e.GetType().IsAssignableFrom(typeof(SqlException)))
+                {
+                    throw new ApplicationException("Error de conexión a la BD.");
                 }
                 throw e;
             }
