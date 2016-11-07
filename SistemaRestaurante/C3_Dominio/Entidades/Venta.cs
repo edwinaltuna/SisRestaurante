@@ -24,6 +24,7 @@ namespace C3_Dominio.Entidades
         public string serieNumero;
         public string SerieNumero
         {
+
             set
             {
                 serieNumero = value;
