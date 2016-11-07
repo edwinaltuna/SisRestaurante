@@ -40,9 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gestionarMesaServices.cs" />
+    <Compile Include="gestionarReporteServices.cs" />
     <Compile Include="gestionarTrabajadorServices.cs" />
+    <Compile Include="gestionarVentaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TipoTrabajadorNE.cs" />
+    <Compile Include="gestionarTipoProductoServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\C3_Dominio\C3_Dominio.csproj">

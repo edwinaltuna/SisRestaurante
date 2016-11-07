@@ -8,13 +8,25 @@ namespace C3_Dominio.Entidades
 {
    public class Venta
     {
-       public int id    {get; set;}
-       public TipoVenta tipoVenta {get; set;}
-       public Pedido pedido {get; set;}
+        public int id { get; set; }
+        public TipoVenta tipoVenta { get; set; }
+        public Pedido pedido { get; set; }
+        public int estado { get; set; }
+        public DateTime fecha { get; set; }
+        public Trabajador trabajador { get; set; }
+
+        public float total { get; set; }
+
        private int serie = 0;
        private int numero = 0;
+     
+       public int cantidad { get; set; } //reportes
        public string serieNumero 
        {
+            set
+            {
+                serieNumero = value;
+            }
            get
            {
                calcularSiguienteSerie(serie);
@@ -26,13 +38,13 @@ namespace C3_Dominio.Entidades
        #region metodos
        public void calcularSiguienteSerie(int serie)
        {
-           this.serie = serie+1;
+            this.serie = serie + 1;
            //TODO: algoritmo para calcular serie 
        }
 
        public void calcularSiguienteNumero(int numero)
        {
-           this.numero =  numero + 1;
+            this.numero = numero + 1;
             //TODO: algoritmo para calcular serie 
        }
        #endregion metodos

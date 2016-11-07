@@ -20,6 +20,7 @@ namespace C2_Aplicacion
         }
         #endregion Singleton
 
+
         private GestorDAOSQL gestorDAOSQL;
         private TrabajadorSQL trabajadorSQL;
 

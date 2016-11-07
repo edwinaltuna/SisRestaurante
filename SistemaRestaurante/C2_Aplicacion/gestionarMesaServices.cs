@@ -17,6 +17,7 @@ namespace C2_Aplicacion
         public static gestionarMesaServices Instancia { get { return gestionarMesaServices._instancia; } }
         #endregion
 
+
         private GestorDAOSQL gestorDAOSQL;
         private MesaSQL mesaDAO;
 

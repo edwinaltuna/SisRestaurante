@@ -21,6 +21,11 @@ namespace C3_Dominio.Entidades
         {
             return DateTime.Now.Year - fechaNacimiento.Year == 18;
         }
+        
+        public string generarNombreCompleto()
+        {
+            return string.Format("{0} {1} {2}",nombres, apellidoPaterno, apellidoMaterno);
+        }
         #endregion metodos
     }
 }
