@@ -47,6 +47,25 @@ namespace C2_Aplicacion
                 throw e;
             }
         }
+        public IList<Producto> reporteDeProductos()
+        {
+            try
+            {
+                ReporteSQL obj = null;
+                using (SqlConnection conexionActual = gestorDAOSQL.abrirConexion())
+                {
+                    conexionActual.Open();
+                    obj = new ReporteSQL(gestorDAOSQL);
+                    conexionActual.Close();
+                }
+
+                return obj.listarProductosMasVendidos();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         #endregion
 
 
