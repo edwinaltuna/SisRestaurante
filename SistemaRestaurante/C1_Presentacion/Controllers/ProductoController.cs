@@ -14,7 +14,7 @@ namespace C1_Presentacion.Controllers
         // GET: /Producto/
 
         gestionarProductoServices obj = new gestionarProductoServices();
-        Producto data = new Producto();
+        Producto producto = new Producto();
         // GET: /Trabajador/
         public ActionResult Index()
         {
@@ -31,16 +31,16 @@ namespace C1_Presentacion.Controllers
         [HttpPost]
         public ActionResult Registrar(FormCollection form)
         {
-            data.id = Int32.Parse(form["id"].ToString());
-            data.precio = float.Parse(form["precio"].ToString());
-            data.descripcion = form["descripcion"];
-            data.fecha = DateTime.Parse(form["fecha"].ToString());
-            data.imagen = form["imagen"];
-            data.estado = Boolean.Parse(form["estado"].ToString());
-            data.tipoProducto.id = Int32.Parse(form["idTipoProducto"].ToString());
-
-            obj.RegistrarProducto(data);
-            return RedirectToAction("Index", "TipoProducto");
+            TipoProducto tipo = new TipoProducto();
+            producto.precio = float.Parse(form["precio"].ToString());
+            producto.descripcion = form["descripcion"];
+            producto.fecha = DateTime.Parse(form["fecha"].ToString());
+            producto.imagen = form["imagen"];
+            producto.estado = Boolean.Parse(form["estado"].ToString());
+            tipo.id = int.Parse(form["tipoProducto.id"].ToString());
+            producto.tipoProducto = tipo;
+            obj.RegistrarProducto(producto);
+            return RedirectToAction("Index", "Producto");
         }
 
         public ActionResult Details(int id)
