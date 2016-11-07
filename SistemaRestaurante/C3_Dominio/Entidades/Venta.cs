@@ -19,8 +19,7 @@ namespace C3_Dominio.Entidades
 
        private int serie = 0;
        private int numero = 0;
-       public DateTime fecha {get; set;}
-
+     
        public int cantidad { get; set; } //reportes
        public string serieNumero 
        {
