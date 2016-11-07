@@ -45,9 +45,37 @@ namespace C4_Persistencia
             }
         }
 
+        public bool CambiarEstadoVenta(int idVenta,int estadoVenta)
+        {
+            bool cambio = false;
+            using (SqlConnection conexionActual = gestorDAOSQL.abrirConexion())
+            {
+                using (SqlCommand cmd = gestorDAOSQL.ObtenerComandoSP("SP_CambiarEstadoVenta", conexionActual))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@param_idVenta", idVenta);
+                        cmd.Parameters.AddWithValue("@param_estadoVenta", estadoVenta);
+                        conexionActual.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            cambio = true;
+                        }
+                        return cambio;
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+        }
+
         private Venta construirObjetoVenta(SqlDataReader resultado)
         {
             Venta tempVenta = new Venta();
+            tempVenta.id = Convert.ToInt32(resultado["idVenta"]);
             tempVenta.SerieNumero = resultado["numeroSerie"].ToString();
             tempVenta.estado = Convert.ToInt32(resultado["estado"]);
             tempVenta.fecha = DateTime.Parse(resultado["fecha"].ToString());

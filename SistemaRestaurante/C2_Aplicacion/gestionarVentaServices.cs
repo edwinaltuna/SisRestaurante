@@ -36,5 +36,18 @@ namespace C2_Aplicacion
                 throw;
             }
         }
+
+        public bool CambiarEstadoVenta(int idVenta, int estadoVenta)
+        {
+            try
+            {
+                return ventaSQL.CambiarEstadoVenta(idVenta, estadoVenta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
