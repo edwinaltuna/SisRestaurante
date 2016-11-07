@@ -17,12 +17,14 @@ namespace C3_Dominio.Entidades
 
         public float total { get; set; }
 
-       private int serie = 0;
-       private int numero = 0;
-     
-       public int cantidad { get; set; } //reportes
-       public string serieNumero 
-       {
+        private int serie = 0;
+
+        private int numero = 0;
+        public int cantidad { get; set; } //reportes
+        public string serieNumero;
+        public string SerieNumero
+        {
+
             set
             {
                 serieNumero = value;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using C3_Dominio.Entidades;
+using C2_Aplicacion;
 
 namespace C1_Presentacion.Controllers
 {
@@ -13,7 +15,8 @@ namespace C1_Presentacion.Controllers
 
         public ActionResult Listar()
         {
-            return View();
+            List<Venta> listaVentas = gestionarVentaServices.Instancia.Listar();
+            return View(listaVentas);
         }
 
     }
