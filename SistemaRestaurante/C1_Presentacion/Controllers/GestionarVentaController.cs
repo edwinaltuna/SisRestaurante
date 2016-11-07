@@ -26,9 +26,13 @@ namespace C1_Presentacion.Controllers
         }
 
         [HttpPost]
-        public ActionResult CambiarEstado(int id)
+        public ActionResult CambiarEstado(int[] data)
         {
-            return PartialView("_CambiarEstado",id);
+            bool cambio = gestionarVentaServices.Instancia.CambiarEstadoVenta(data[0], data[1]== 0 ? 1 : 0);
+            List<int> parametros = new List<int>();
+            parametros.Add(data[0]);
+            parametros.Add(data[1] == 0 ? 1 : 0);
+            return PartialView("_CambiarEstado",parametros);
         }
 
     }
