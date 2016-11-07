@@ -19,7 +19,8 @@ namespace C3_Dominio.Entidades
 
         private int serie = 0;
         private int numero = 0;
-        public string serieNumero
+        public string serieNumero;
+        public string SerieNumero
         {
             set
             {

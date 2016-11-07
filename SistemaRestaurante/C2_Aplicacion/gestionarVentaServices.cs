@@ -21,7 +21,7 @@ namespace C2_Aplicacion
         public gestionarVentaServices()
         {
             gestorDAOSQL = new GestorDAOSQL();
-
+            ventaSQL = new VentaSQL(gestorDAOSQL);
         }
 
         public List<Venta> Listar(int? idVenta = null)

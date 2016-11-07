@@ -48,8 +48,8 @@ namespace C4_Persistencia
         private Venta construirObjetoVenta(SqlDataReader resultado)
         {
             Venta tempVenta = new Venta();
-            tempVenta.serieNumero = resultado["numeroSerie"].ToString();
-            tempVenta.estado = int.Parse(resultado["estado"].ToString());
+            tempVenta.SerieNumero = resultado["numeroSerie"].ToString();
+            tempVenta.estado = Convert.ToInt32(resultado["estado"]);
             tempVenta.fecha = DateTime.Parse(resultado["fecha"].ToString());
             tempVenta.total = float.Parse(resultado["totalPedido"].ToString());
             TipoTrabajador tipoTrabajador = new TipoTrabajador();
