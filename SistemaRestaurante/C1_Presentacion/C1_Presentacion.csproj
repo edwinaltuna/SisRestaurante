@@ -262,7 +262,9 @@
     <Content Include="Views\Producto\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Recursos\lang\Spanish.json" />
+    <Content Include="Recursos\lang\Spanish.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_CambiarEstado.cshtml" />
@@ -282,9 +284,15 @@
   <ItemGroup>
     <Content Include="Recursos\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Recursos\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Recursos\fonts\glyphicons-halflings-regulard41d.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_DetalleVenta.cshtml" />
