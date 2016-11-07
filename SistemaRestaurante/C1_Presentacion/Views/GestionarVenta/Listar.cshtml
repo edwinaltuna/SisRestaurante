@@ -6,15 +6,16 @@
 }
 
 <div class="wraper container-fluid">
-    <div class="page-title">
+    @*<div class="page-title">
         <h3 class="title">Datatable</h3>
-    </div>
+    </div>*@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div id="panelListaVentas" class="panel panel-default ">
                 <div class="panel-heading">
                     <h3 class="panel-title">Ventas</h3>
+                    <a id="refrescarTabla" javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -46,9 +47,9 @@
                                                 @switch (venta.estado)
                                                 {
                                                     case 0:
-                                                        <span class="label label-danger"><text>Anulado</text></span> break;
+                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id,this)" ><span class="label label-danger"><text>Anulado</text></span></a> break;
                                                     case 1:
-                                                        <span class="label label-success"><text>Activo</text></span> break;
+                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id,this)" ><span class="label label-success"><text>Activo</text></span></a> break;
                                                 }
                                                 
                                             
@@ -100,7 +101,39 @@
                 "url": '../Recursos/lang/Spanish.json'
             }
         });
+
     });
     TableManageButtons.init();
+    var currentId;
+    function cambiarEstadoVenta(idVenta, that) {
+        console.log("refrescar click");
+        currentId = idVenta;
+        $.ajax({
+            dataType: "html",
+            type: "POST",
+            url: '@Url.Action("CambiarEstado", "GestionarVenta")',
+            data: { id: idVenta },
+            beforeSend: function () {
+                $('panelListaVentas').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+            },
+            complete: function () {
+                var $pd = $portlet.find('.panel-disabled');
+                $pd.fadeOut('fast', function () {
+                    $pd.remove();
+                });
+            },
+            success: function (data) {
+                alert('success')
+                $('#venta_' + currentId).html(data);
+            },
+            error: function (xhr) {
+                alert('error')
+            }
+
+        });
+    };
+
+
+
 </script>
 }

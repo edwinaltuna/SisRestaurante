@@ -19,5 +19,17 @@ namespace C1_Presentacion.Controllers
             return View(listaVentas);
         }
 
+        [HttpGet]
+        public ActionResult Crear()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CambiarEstado(int id)
+        {
+            return PartialView("_CambiarEstado",id);
+        }
+
     }
 }
