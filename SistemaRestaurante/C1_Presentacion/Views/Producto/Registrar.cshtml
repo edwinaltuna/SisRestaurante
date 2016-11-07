@@ -52,7 +52,13 @@
             @Html.EditorFor(model => model.estado)
             @Html.ValidationMessageFor(model => model.estado)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tipoProducto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tipoProducto.id)
+            @Html.ValidationMessageFor(model => model.tipoProducto.id)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
