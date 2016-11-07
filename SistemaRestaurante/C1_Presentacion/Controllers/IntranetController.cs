@@ -33,6 +33,7 @@ namespace C1_Presentacion.Controllers
             try
             {
                 Mesa mesa = gestionarMesaServices.Instancia.ValidarMesa(id);
+                Session["mesa"] = mesa;
                 if (mesa.estado == false) {
                     return RedirectToAction("ListarProducto", "GestionarPedido");
                 }

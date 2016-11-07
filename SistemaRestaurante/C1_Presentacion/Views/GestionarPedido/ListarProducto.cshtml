@@ -1,9 +1,11 @@
 ﻿@model List<C3_Dominio.Entidades.Producto>
+@using C3_Dominio.Entidades;
 @{
     ViewBag.Title = "ListarProducto";
     Layout = "~/Views/MasterPage/Master.cshtml";
+    Mesa t = (Mesa)Session["mesa"];
+    Trabajador tr = (Trabajador)Session["trabajador"];
 }
-
 <div class="page-title">
     <h3 class="title">Principal</h3>
 </div>
@@ -32,14 +34,15 @@
                             <h3 style="color:gray; font-family:Arial; font-size: 12px">
                                 Detalle:@m.precio
                             </h3>
-                            <form method="post" action="AgregarGuia/GuiarecepcionController">
+                            <form method="post" action="AgregarPedido/GestionarPedidoController">
                                 <input type="hidden" name="txtNombre" value="@m.descripcion" />
-                                <input type="hidden" name="txtDescripcion" value="@m.precio" />
-                                <input type="hidden" name="txtObservacion"  />
+                                <input type="hidden" name="txtPrecio" value="@m.precio" />
                                 <input type="hidden" name="txtidProducto" value="@m.id" />
+                                <input type="hidden" name="txtidMesa" value="@t.id" />
+                                <input type="hidden" name="txtidTrabajador" value="@tr.id" />
 
                                 <input type="text" name="txtCant" value="1" style="width:30px" />
-                                <button class="btn btn-sm btn-success" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-sm btn-success"  name="btnRegistrar" id="verPedido"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </form>
                         </td>
                         if (numceldas == 4)
@@ -51,6 +54,11 @@
                 }
             </table>
         </div>
+
+        <div id="CarritoPedidos">
+
+        </div>
+
     </div>
 </div>
 
@@ -81,5 +89,12 @@
             });
         });
         TableManageButtons.init();
+
+        $("#verPedido").click(function () {
+            $("#CarritoPedidos").load('@Url.Action("VerPedido")', {
+
+            })
+        })
+
     </script>
 }

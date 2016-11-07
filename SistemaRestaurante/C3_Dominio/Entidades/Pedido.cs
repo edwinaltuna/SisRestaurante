@@ -10,7 +10,7 @@ namespace C3_Dominio.Entidades
     {
         int id {get; set;}
         DateTime fecha {get; set;}
-        double total {get; set;}
+        decimal total {get; set;}
         int estado {get; set;}
         Cliente idCliente {get; set;}
         Mesa mesa {get; set;}
