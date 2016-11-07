@@ -14,8 +14,21 @@ namespace C1_Presentacion.Controllers
         [HttpGet]
         public ActionResult ReportesdeVenta()
         {
+
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ListarVenta(FormCollection fr)
+        {
+            DateTime fInicio = Convert.ToDateTime(fr["ConboFInicio"]);
+            DateTime fFin = Convert.ToDateTime(fr["ConboFFiN"]);
+
+            List<Venta> lista = gestionarReporteServices.Instancia.ListarVenta(fInicio, fFin);
+            return View(lista);
+        }
+
+
         public ActionResult ReporteProducto()
         {
             return View();
