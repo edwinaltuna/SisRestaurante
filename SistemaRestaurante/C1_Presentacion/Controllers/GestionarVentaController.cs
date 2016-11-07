@@ -35,5 +35,11 @@ namespace C1_Presentacion.Controllers
             return PartialView("_CambiarEstado",parametros);
         }
 
+        [HttpPost]
+        public ActionResult MostrarPedidosVenta(string[] data)
+        {
+            return PartialView("_DetalleVenta",data);
+        }
+
     }
 }

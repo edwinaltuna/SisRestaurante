@@ -56,7 +56,7 @@
                                             
                                         </td>
                                         <td>
-                                            <a href="#" id="modal_venta_trigger_@venta.id">
+                                            <a href="#" id="modal_venta_trigger_@venta.id" onclick="verPedidos(@venta.id,'@venta.SerieNumero')">
                                                 <i class="zmdi zmdi-eye"></i>
                                             </a>
                                         </td>
@@ -74,7 +74,9 @@
     </div>
 </div>
 
+<div id="modal_detalle_venta" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
 
+</div>
 
 
 
@@ -112,9 +114,37 @@
 
     });
     TableManageButtons.init();
+
+    function verPedidos(idVenta,serieNumeroVenta) {
+        var data = new Array();
+        data.push("Venta "+serieNumeroVenta);
+        $.ajax({
+            dataType: "html",
+            contentType: "application/json",
+            type: "POST",
+            url: '@Url.Action("MostrarPedidosVenta", "GestionarVenta")',
+            data: JSON.stringify(data),
+            beforeSend: function () {
+                //nada xd tiene q verse como automatico
+            },
+            success: function (parcialDetalleVenta) {
+                $('#modal_detalle_venta').html(parcialDetalleVenta);
+                $('#modal_detalle_venta').modal('show',true);
+            },
+            complete: function () {
+                
+            },
+            error: function (xhr) {
+                alert('Contacte al administrador.')//cambiar swAl
+            }
+
+        });
+    }
+
+
     var currentId;
     var currentEstado;
-    
+
     function cambiarEstadoVenta(idVenta) {
         //console.log("refrescar click");
         currentId = idVenta;
@@ -132,7 +162,7 @@
             data: JSON.stringify(data),
             beforeSend: function () {
                 $('#panelListaVentas').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
-            },            
+            },
             success: function (partial) {
                 //alert('success')
                 //console.log(partial);
