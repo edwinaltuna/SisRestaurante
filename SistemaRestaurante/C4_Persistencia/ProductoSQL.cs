@@ -20,47 +20,50 @@ namespace C4_Persistencia
         }
         #endregion Singleton
 
-        #region metodos
+ 
 
+        private Producto CrearObjetoProducto(SqlDataReader resultado)
+        {
+            Producto producto;
+            producto = new Producto();
+            producto.id = resultado.GetInt32(0);
+            producto.precio = Convert.ToDouble(resultado.GetDecimal(1));
+            producto.descripcion = resultado.GetString(2);
+            producto.fecha = resultado.GetDateTime(3);
+            producto.imagen = resultado.GetString(4);
+            TipoProducto tipo = new TipoProducto();
+            tipo.id = resultado.GetInt32(5);
+            producto.tipoProducto = tipo;
+            return producto;
+        }
+
+       
         public List<Producto> ListarProductos()
         {
-            SqlCommand cmd = null;
-            List<Producto> listarProducto = new List<Producto>();
+            Producto producto;
+            List<Producto> listProducto = new List<Producto>();
             try
             {
-                using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
+                using (SqlConnection conexion = GestorDAOSQL.Instancia.abrirConexion())
                 {
-                    cmd = new SqlCommand("listarProducto", cn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    while (dr.Read())
+                    conexion.Open();
+                    SqlCommand cmd = GestorDAOSQL.Instancia.ObtenerComandoSP("sp_ListarProducto", conexion);
+                    SqlDataReader resultado = cmd.ExecuteReader();
+                    while (resultado.Read())
                     {
-                        Producto p = new Producto();
-                        p.id = Convert.ToInt16(dr["idProducto"]);
-                        p.precio = Convert.ToDouble(dr["precio"]);
-
-                        p.descripcion = dr["descripcion"].ToString();
-                        //t.descripcion = dr["dni"].ToString();
-                        p.fecha = Convert.ToDateTime(dr["fecha"]);
-
-                        p.imagen = dr["imagen"].ToString();
-                        p.estado = Convert.ToBoolean(dr["estado"]);
-
-                        p.tipoProducto.id = Convert.ToInt16(dr["idTipoProducto"]);
-                        listarProducto.Add(p);
+                        producto = CrearObjetoProducto(resultado);
+                        listProducto.Add(producto);
                     }
+                    resultado.Close();
                 }
-                return listarProducto;
+                return listProducto;
             }
             catch (Exception e)
             {
                 throw e;
             }
-
         }
+       }
 
-        #endregion
-    }
 }
+
