@@ -76,7 +76,6 @@ namespace C4_Persistencia
        }
 #endregion 
 
-
-
+       /*reporte*/
          }
 }

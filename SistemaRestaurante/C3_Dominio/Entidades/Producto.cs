@@ -14,7 +14,7 @@ namespace C3_Dominio.Entidades
         public DateTime fecha { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }
-
+        public TipoProducto tipoProducto { get; set; }
         #region metodos
         public bool estaDisponible()
         {
