@@ -8,13 +8,16 @@ namespace C1_Presentacion.Controllers
 {
     public class ReportesController : Controller
     {
-        //
-        // GET: /Reportes/
 
+        [HttpGet]
         public ActionResult ReportesdeVenta()
         {
             return View();
         }
+
+
+        
+     
 
     }
 }
