@@ -48,6 +48,7 @@ namespace C4_Persistencia
                         p.imagen = dr["imagen"].ToString();
                         p.estado = Convert.ToBoolean(dr["estado"]);
 
+                        p.tipoProducto.id = Convert.ToInt16(dr["idTipoProducto"]);
                         listarProducto.Add(p);
                     }
                 }
