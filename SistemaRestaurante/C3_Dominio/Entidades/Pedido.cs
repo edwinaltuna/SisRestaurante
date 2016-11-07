@@ -8,13 +8,14 @@ namespace C3_Dominio.Entidades
 {
     public class Pedido
     {
-        int id {get; set;}
-        DateTime fecha {get; set;}
-        decimal total {get; set;}
-        int estado {get; set;}
-        Cliente idCliente {get; set;}
-        Mesa mesa {get; set;}
-        List<DetallePedido> detallesPedido {get;set;}
+        public int id {get; set;}
+        public DateTime fecha {get; set;}
+        public double total {get; set;}
+        public int estado {get; set;}
+        public Cliente idCliente {get; set;}
+        public Mesa mesa {get; set;}
+        public List<DetallePedido> detallesPedido {get;set;}
+        public Trabajador trabajador { get; set;}
 
         #region metodos
         public double calcularTotal(){

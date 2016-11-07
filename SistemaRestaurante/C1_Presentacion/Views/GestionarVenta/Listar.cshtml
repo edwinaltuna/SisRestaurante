@@ -115,9 +115,9 @@
     });
     TableManageButtons.init();
 
-    function verPedidos(idVenta,serieNumeroVenta) {
+    function verPedidos(idVenta) {
         var data = new Array();
-        data.push("Venta "+serieNumeroVenta);
+        data.push(idVenta);
         $.ajax({
             dataType: "html",
             contentType: "application/json",
@@ -129,6 +129,33 @@
             },
             success: function (parcialDetalleVenta) {
                 $('#modal_detalle_venta').html(parcialDetalleVenta);
+                $('#detalleVenta_datatable').dataTable({
+                    "language": {
+                        "url": '../Recursos/lang/Spanish.json'
+                    },
+                    "footerCallback": function (row, data, start, end, display) {
+                        var api = this.api(), data;
+
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function (i) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '') * 1 :
+                                typeof i === 'number' ?
+                                i : 0;
+                        };
+
+                        // Total over this page
+                        pageTotal = api
+                            .column(6, { page: 'current' })
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Update footer
+                        $(api.column(6).footer()).html(pageTotal);
+                    }
+                });
                 $('#modal_detalle_venta').modal('show',true);
             },
             complete: function () {

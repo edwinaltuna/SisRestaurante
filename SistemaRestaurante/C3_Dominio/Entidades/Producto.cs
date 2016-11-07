@@ -9,7 +9,7 @@ namespace C3_Dominio.Entidades
     public class Producto
     {
         public int id {get;set;}
-        public double precio { get; set; }
+        public float precio { get; set; }
         public string descripcion { get; set; }
         public DateTime fecha { get; set; }
         public string imagen { get; set; }

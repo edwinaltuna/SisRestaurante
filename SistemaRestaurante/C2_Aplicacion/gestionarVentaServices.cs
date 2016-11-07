@@ -49,5 +49,18 @@ namespace C2_Aplicacion
                 throw;
             }
         }
+
+        public Venta ListarDetallesDeVenta(int idVenta)
+        {
+            try
+            {
+                return ventaSQL.ListarDetallesDeVenta(idVenta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
