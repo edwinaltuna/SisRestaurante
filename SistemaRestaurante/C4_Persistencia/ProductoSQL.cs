@@ -65,7 +65,6 @@ namespace C4_Persistencia
         }
         public Boolean RegistrarProducto(Producto p)
         {
-            Boolean inserto = false;
 
             using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
             {
@@ -75,6 +74,81 @@ namespace C4_Persistencia
                     {
 
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@precio", p.precio);
+                        cmd.Parameters.AddWithValue("@descripcion", p.descripcion);
+                        cmd.Parameters.AddWithValue("@fecha", p.fecha);
+                        cmd.Parameters.AddWithValue("@imagen", p.imagen);
+                        cmd.Parameters.AddWithValue("@idTipoProducto", p.tipoProducto.id);
+                        cmd.Parameters.AddWithValue("@estado", p.estado);
+
+                        cn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            
+        }
+
+        public Producto ListarProductoPorId(Int16 id)
+        {
+            SqlCommand cmd = null;
+            Producto p = null;
+            try
+            {
+                using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
+                {
+                    cmd = new SqlCommand("detalleProducto", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("id", id);
+                    cn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        p = new Producto();
+                        p.id = Convert.ToInt16(dr["id"]);
+                        p.precio = Convert.ToDouble(dr["descripcion"]);
+                        p.descripcion = dr["descripcion"].ToString();
+                        p.fecha = Convert.ToDateTime(dr["fecha"]);
+                        p.imagen = dr["imagen"].ToString();
+                        //t.descripcion = dr["descripcion"].ToString();
+                        p.estado = Convert.ToBoolean(dr["estado"]);
+                        TipoProducto tipo = new TipoProducto();
+                        tipo.id = Convert.ToInt16(dr["idTipoProducto"]);
+                        p.tipoProducto = tipo;
+
+                    }
+                }
+                return p;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public Boolean EditarProducto(Producto p)
+        {
+            Boolean inserto = false;
+
+            using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("editarProducto", cn))
+                {
+                    try
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", p.id);
                         cmd.Parameters.AddWithValue("@precio", p.precio);
                         cmd.Parameters.AddWithValue("@descripcion", p.descripcion);
                         cmd.Parameters.AddWithValue("@fecha", p.fecha);
@@ -96,6 +170,36 @@ namespace C4_Persistencia
             }
 
             return inserto;
+        }
+
+        public bool Delete(int id)
+        {
+            using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("borrarProducto", cn))
+                {
+
+                    try
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        cn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            throw new Exception("Error al borrar Plato.");
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
         }
     
     }
