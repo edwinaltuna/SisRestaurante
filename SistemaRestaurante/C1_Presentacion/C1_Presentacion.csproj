@@ -254,6 +254,9 @@
     <Content Include="Recursos\lang\Spanish.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\GestionarVenta\_CambiarEstado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Producto\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
