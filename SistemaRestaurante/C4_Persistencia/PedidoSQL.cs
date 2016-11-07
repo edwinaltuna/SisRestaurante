@@ -31,6 +31,33 @@ namespace C4_Persistencia
             return producto;
         }
 
+        #region Metodos
+        public List<Producto> ListarProducto()
+        {
+            Producto producto;
+            List<Producto> listProducto = new List<Producto>();
+            try
+            {
+                using (SqlConnection conexion = GestorDAOSQL.Instancia.abrirConexion())
+                {
+                    conexion.Open();
+                    SqlCommand cmd = GestorDAOSQL.Instancia.ObtenerComandoSP("sp_ListarProducto", conexion);
+                    SqlDataReader resultado = cmd.ExecuteReader();
+                    while(resultado.Read()){
+                        producto = CrearObjetoProducto(resultado);
+                        listProducto.Add(producto);
+                    }
+                    resultado.Close();
+                }
+                return listProducto;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        #endregion
+
 
     }
 }

@@ -113,6 +113,7 @@
     <Compile Include="Controllers\GestionarVentaController.cs" />
     <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\TipoProductoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -254,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_CambiarEstado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Producto\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
