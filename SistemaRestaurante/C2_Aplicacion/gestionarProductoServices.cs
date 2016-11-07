@@ -31,6 +31,19 @@ namespace C2_Aplicacion
                 throw;
             }
         }
+
+        public Boolean RegistrarProducto(Producto t)
+        {
+            try
+            {
+                return ProductoSQL.Instancia.RegistrarProducto(t);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         #endregion
     }
 }

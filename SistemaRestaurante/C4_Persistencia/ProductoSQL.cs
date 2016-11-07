@@ -63,7 +63,42 @@ namespace C4_Persistencia
                 throw e;
             }
         }
-       }
+        public Boolean RegistrarProducto(Producto p)
+        {
+            Boolean inserto = false;
+
+            using (SqlConnection cn = GestorDAOSQL.Instancia.abrirConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("insertarProducto", cn))
+                {
+                    try
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@precio", p.precio);
+                        cmd.Parameters.AddWithValue("@descripcion", p.descripcion);
+                        cmd.Parameters.AddWithValue("@fecha", p.fecha);
+                        cmd.Parameters.AddWithValue("@imagen", p.imagen);
+                        cmd.Parameters.AddWithValue("@idTipoProducto", p.tipoProducto.id);
+                        cmd.Parameters.AddWithValue("@estado", p.estado);
+
+                        cn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            inserto = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            return inserto;
+        }
+    
+    }
 
 }
 
