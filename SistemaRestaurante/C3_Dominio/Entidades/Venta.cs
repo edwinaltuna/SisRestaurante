@@ -33,7 +33,7 @@ namespace C3_Dominio.Entidades
            {
                calcularSiguienteSerie(serie);
                calcularSiguienteNumero(numero);
-               return serie.ToString("3D") + " - " + numero.ToString("10D");
+                return string.Format("{0:D3} - {1:D10}", serie, numero); 
            }
        }
 
