@@ -32,14 +32,14 @@
                             <h3 style="color:gray; font-family:Arial; font-size: 12px">
                                 Detalle:@m.precio
                             </h3>
-                            <form method="post" action="AgregarGuia/GuiarecepcionController">
+                            <form method="post">
                                 <input type="hidden" name="txtNombre" value="@m.descripcion" />
                                 <input type="hidden" name="txtDescripcion" value="@m.precio" />
-                                <input type="hidden" name="txtObservacion"  />
+                                <input type="hidden" name="txtObservacion" />
                                 <input type="hidden" name="txtidProducto" value="@m.id" />
 
                                 <input type="text" name="txtCant" value="1" style="width:30px" />
-                                <button class="btn btn-sm btn-success" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-sm btn-success registrar" name="btnRegistrar" ><i class="fa fa-plus-circle"></i> Agregar</button>
                             </form>
                         </td>
                         if (numceldas == 4)
@@ -51,8 +51,12 @@
                 }
             </table>
         </div>
+        <div id="table-Pedido">
+
+        </div>
     </div>
 </div>
+
 
 @section scripts{
 
@@ -81,5 +85,9 @@
             });
         });
         TableManageButtons.init();
+
+        $(".registrar").click(function (e) {
+            $("#table-Pedido").load('@Url.Action("VerPedido")');
+        })
     </script>
 }
