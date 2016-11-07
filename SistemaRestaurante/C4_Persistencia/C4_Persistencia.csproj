@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="GestorDAOSQL.cs" />
     <Compile Include="MesaSQL.cs" />
+    <Compile Include="PedidoSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoTrabajadorDA.cs" />
     <Compile Include="TrabajadorSQL.cs" />

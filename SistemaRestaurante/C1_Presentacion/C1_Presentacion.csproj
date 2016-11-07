@@ -109,6 +109,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GestionarPedidoController.cs" />
     <Compile Include="Controllers\GestionarVentaController.cs" />
     <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -227,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TipoTrabajador\Detalles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarPedido\ListarProducto.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarPedido\VerPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TipoProducto\Index.cshtml" />
