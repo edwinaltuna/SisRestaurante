@@ -127,12 +127,14 @@ namespace C4_Persistencia
 
                     }
                 }
-                return p;
+                
             }
             catch (Exception e)
             {
                 throw e;
             }
+            finally { cmd.Connection.Close(); }
+            return p;
 
         }
 
