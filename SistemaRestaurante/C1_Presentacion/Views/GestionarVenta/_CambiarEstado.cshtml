@@ -1,1 +1,23 @@
-﻿<span class="label label-danger"> AJAX
+﻿@model IEnumerable<int>
+@{ 
+    List<int> data = (List<int>)Model;
+}
+@switch (data[1])
+{
+    case 0:
+        <input type="hidden" id="estado_venta_@data[0]" value="@data[1]" />
+        <a href="#" id="venta_@data[0]" onclick="cambiarEstadoVenta(@data[0])">
+            <span class="label label-danger">
+                <text>Anulado</text>
+            </span>
+        </a> 
+        break;
+    case 1:
+        <input type="hidden" id="estado_venta_@data[0]" value="@data[0]" />
+        <a href="#" id="venta_@data[0]" onclick="cambiarEstadoVenta(@data[0])">
+            <span class="label label-success">
+                <text>Activo</text>
+            </span>
+        </a> 
+        break;
+}
