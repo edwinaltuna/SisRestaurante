@@ -115,7 +115,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\TipoProductoController.cs" />
-    <Compile Include="Controllers\TipoTrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
