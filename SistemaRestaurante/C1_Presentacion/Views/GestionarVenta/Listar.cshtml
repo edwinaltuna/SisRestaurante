@@ -42,14 +42,16 @@
                                         <td>@venta.trabajador.tipoTrabajador.nombre</td>
                                         <td>@venta.trabajador.generarNombreCompleto()</td>
                                         <td>@venta.total</td>
-                                        <td>
+                                        <td id="td_venta_@venta.id">
                                             
                                                 @switch (venta.estado)
                                                 {
                                                     case 0:
-                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id,this)" ><span class="label label-danger"><text>Anulado</text></span></a> break;
+                                                        <input type="hidden" id="estado_venta_@venta.id" value="@venta.estado"/>
+                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id)" ><span class="label label-danger"><text>Anulado</text></span></a> break;
                                                     case 1:
-                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id,this)" ><span class="label label-success"><text>Activo</text></span></a> break;
+                                                        <input type="hidden" id="estado_venta_@venta.id" value="@venta.estado" />
+                                                        <a href="#" id="venta_@venta.id" onclick="cambiarEstadoVenta(@venta.id)" ><span class="label label-success"><text>Activo</text></span></a> break;
                                                 }
                                                 
                                             
@@ -105,29 +107,39 @@
     });
     TableManageButtons.init();
     var currentId;
-    function cambiarEstadoVenta(idVenta, that) {
-        console.log("refrescar click");
+    var currentEstado;
+    
+    function cambiarEstadoVenta(idVenta) {
+        //console.log("refrescar click");
         currentId = idVenta;
+        currentEstado = $('#estado_venta_' + currentId).val();
+        var data = new Array();
+        data.push(currentId);
+        data.push(currentEstado);
+        //console.log(data);
         $.ajax({
             dataType: "html",
+            contentType: "application/json",
             type: "POST",
             url: '@Url.Action("CambiarEstado", "GestionarVenta")',
-            data: { id: idVenta },
+            //traditional : true,
+            data: JSON.stringify(data),
             beforeSend: function () {
-                $('panelListaVentas').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+                $('#panelListaVentas').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+            },            
+            success: function (partial) {
+                //alert('success')
+                //console.log(partial);
+                $('#td_venta_' + currentId).html(partial);
             },
             complete: function () {
-                var $pd = $portlet.find('.panel-disabled');
+                var $pd = $('#panelListaVentas').find('.panel-disabled');
                 $pd.fadeOut('fast', function () {
                     $pd.remove();
                 });
             },
-            success: function (data) {
-                alert('success')
-                $('#venta_' + currentId).html(data);
-            },
             error: function (xhr) {
-                alert('error')
+                alert('Contacte al administrador.')//cambiar swAl
             }
 
         });
