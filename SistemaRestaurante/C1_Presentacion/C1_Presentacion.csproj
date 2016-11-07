@@ -113,6 +113,7 @@
     <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\TipoProductoController.cs" />
     <Compile Include="Controllers\TipoTrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -128,6 +129,25 @@
     <Content Include="Recursos\assets\c3-chart\c3.css" />
     <Content Include="Recursos\assets\c3-chart\c3.js" />
     <Content Include="Recursos\assets\c3-chart\d3.v3.min.js" />
+    <Content Include="Recursos\assets\datatables\buttons.bootstrap.min.css" />
+    <Content Include="Recursos\assets\datatables\buttons.bootstrap.min.js" />
+    <Content Include="Recursos\assets\datatables\buttons.html5.min.js" />
+    <Content Include="Recursos\assets\datatables\buttons.print.min.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.bootstrap.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.buttons.min.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.keyTable.min.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.responsive.min.js" />
+    <Content Include="Recursos\assets\datatables\dataTables.scroller.min.js" />
+    <Content Include="Recursos\assets\datatables\fixedHeader.bootstrap.min.css" />
+    <Content Include="Recursos\assets\datatables\jquery.dataTables.min.css" />
+    <Content Include="Recursos\assets\datatables\jquery.dataTables.min.js" />
+    <Content Include="Recursos\assets\datatables\jszip.min.js" />
+    <Content Include="Recursos\assets\datatables\pdfmake.min.js" />
+    <Content Include="Recursos\assets\datatables\responsive.bootstrap.min.css" />
+    <Content Include="Recursos\assets\datatables\responsive.bootstrap.min.js" />
+    <Content Include="Recursos\assets\datatables\scroller.bootstrap.min.css" />
+    <Content Include="Recursos\assets\datatables\vfs_fonts.js" />
     <Content Include="Recursos\assets\font-awesome\css\font-awesome.css" />
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfonte0a5.svg" />
     <Content Include="Recursos\assets\ionicon\css\ionicons.min.css" />
@@ -142,6 +162,7 @@
     <Content Include="Recursos\img\favicon_1.ico" />
     <Content Include="Recursos\img\mesa.jpg" />
     <Content Include="Recursos\js\bootstrap.min.js" />
+    <Content Include="Recursos\js\datatables.init.js" />
     <Content Include="Recursos\js\jquery.app.js" />
     <Content Include="Recursos\js\jquery.js" />
     <Content Include="Recursos\js\jquery.nicescroll.js" />
@@ -206,6 +227,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TipoTrabajador\Detalles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoProducto\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoProducto\Registrar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TipoProducto\Detalles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarVenta\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Recursos\assets\bootstrap3-editable\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

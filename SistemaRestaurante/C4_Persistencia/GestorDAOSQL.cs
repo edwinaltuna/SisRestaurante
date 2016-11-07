@@ -26,7 +26,8 @@ namespace C4_Persistencia
             try
             {
                 conexion = new SqlConnection();
-                conexion.ConnectionString = "Data Source=tcp:hs4cfke29g.database.windows.net,1433;Initial Catalog=BD_SistemaRestaurant;User ID=Administrador;Password=Admin123";
+
+                conexion.ConnectionString ="Data Source=tcp:hs4cfke29g.database.windows.net,1433;Initial Catalog=BD_SistemaRestaurant;User ID=Administrador;Password=Admin123";
                 return conexion;
             }
             catch (Exception e)
