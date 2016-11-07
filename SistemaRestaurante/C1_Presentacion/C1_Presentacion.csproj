@@ -257,7 +257,9 @@
   <ItemGroup>
     <Content Include="Views\GestionarVenta\Listar.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Producto\Details.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\lang\Spanish.json" />
   </ItemGroup>
@@ -269,6 +271,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Producto\Registrar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Producto\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Producto\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
