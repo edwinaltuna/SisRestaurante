@@ -74,6 +74,51 @@ namespace C4_Persistencia
            }
 
        }
+       public Producto crearReporteProducto(SqlDataReader resultado)
+       {
+           try
+           {
+               Producto p = new Producto();
+               p.id = resultado.GetInt32(0);
+               p.descripcion = resultado.GetString(1);
+               p.precio = Convert.ToDouble(resultado.GetOrdinal("precio"));
+               p.imagen = resultado.GetString(3);
+               p.fecha = resultado.GetDateTime(4);
+               p.estado = Convert.ToBoolean(resultado.GetOrdinal("estado"));
+               return p;
+           }
+           catch (Exception e)
+           {
+               throw e;
+           }
+       }
+       public IList<Producto> listarProductosMasVendidos()
+       {
+           List<Producto> lista = new List<Producto>();
+           Producto p = null;
+           using (SqlConnection conexionActual = GestorDAOSQL.Instancia.abrirConexion())
+           {
+
+               conexionActual.Open();
+               String sp = "SP_ProductoMasVendidosPorFecha";
+               SqlCommand comando = GestorDAOSQL.Instancia.ObtenerComandoSP(sp, conexionActual);
+               //String fecha = Convert.ToString(DateTime.Now.Year) +"-"+Convert.ToString(DateTime.Now.Month)+"-" + Convert.ToString(DateTime.Now.Day);
+               String fecha = "2016-10-02";
+               comando.Parameters.AddWithValue("@fecha", fecha);
+               SqlDataReader resultado = comando.ExecuteReader();
+               while (resultado.Read())
+               {
+                   p = crearReporteProducto(resultado);
+                   lista.Add(p);
+
+               }
+               resultado.Close();
+
+               return lista;
+
+           }
+
+       }
 #endregion 
 
        /*reporte*/

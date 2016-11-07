@@ -12,6 +12,14 @@
     <link rel="shortcut icon" href="~/Recursos/img/favicon_1.ico">
     <title></title>
 
+    <!--DataTables-->
+    <link href="~/Recursos/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Recursos/assets/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Recursos/assets/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Recursos/assets/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Recursos/assets/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!--Bootstrap core-->
     <link href="~/Recursos/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Recursos/css/bootstrap-reset.css" rel="stylesheet" />
 
@@ -31,6 +39,9 @@
     <link href="~/Recursos/assets/bootstrap3-editable/bootstrap-editable.css" rel="stylesheet" />
     <!--Charts-->
     <link href="~/Recursos/assets/c3-chart/c3.css" rel="stylesheet" />
+    @*google chart*@
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     
@@ -112,6 +123,7 @@
                     <a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">Reportes</span></a>
                     <ul class="list-unstyled">
                         <li><a href="@Url.Action("ReportesdeVenta", "Reportes", null, null)">Reporte de Venta</a></li>
+                        <li><a href="@Url.Action("ReporteProducto","Reportes",null,null)">Reporte de Productos</a></li>
                     </ul>
                 </li>
             </ul>
