@@ -32,7 +32,7 @@ namespace C1_Presentacion.Controllers
         public ActionResult Registrar(FormCollection form)
         {
             data.id = Int32.Parse(form["id"].ToString());
-            data.precio = Double.Parse(form["precio"].ToString());
+            data.precio = float.Parse(form["precio"].ToString());
             data.descripcion = form["descripcion"];
             data.fecha = DateTime.Parse(form["fecha"].ToString());
             data.imagen = form["imagen"];

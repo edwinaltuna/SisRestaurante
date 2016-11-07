@@ -17,9 +17,9 @@ namespace C3_Dominio.Entidades
 
         public float total { get; set; }
 
-        private int serie = 0;
+        public int serie = 0;
 
-        private int numero = 0;
+        public int numero = 0;
         public int cantidad { get; set; } //reportes
         public string serieNumero;
         public string SerieNumero
@@ -31,8 +31,8 @@ namespace C3_Dominio.Entidades
             }
            get
            {
-               calcularSiguienteSerie(serie);
-               calcularSiguienteNumero(numero);
+               //calcularSiguienteSerie(serie);
+               //calcularSiguienteNumero(numero);
                 return string.Format("{0:D3} - {1:D10}", serie, numero); 
            }
        }

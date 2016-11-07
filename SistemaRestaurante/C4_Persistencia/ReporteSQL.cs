@@ -81,7 +81,7 @@ namespace C4_Persistencia
                Producto p = new Producto();
                p.id = resultado.GetInt32(0);
                p.descripcion = resultado.GetString(1);
-               p.precio = Convert.ToDouble(resultado.GetOrdinal("precio"));
+               p.precio = float.Parse(resultado.GetOrdinal("precio").ToString());
                p.imagen = resultado.GetString(3);
                p.fecha = resultado.GetDateTime(4);
                p.estado = Convert.ToBoolean(resultado.GetOrdinal("estado"));

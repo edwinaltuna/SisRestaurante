@@ -36,9 +36,11 @@ namespace C1_Presentacion.Controllers
         }
 
         [HttpPost]
-        public ActionResult MostrarPedidosVenta(string[] data)
+        public ActionResult MostrarPedidosVenta(int[] data)
         {
-            return PartialView("_DetalleVenta",data);
+            Venta venta= gestionarVentaServices.Instancia.ListarDetallesDeVenta(data[0]);
+            
+            return PartialView("_DetalleVenta",venta);
         }
 
     }

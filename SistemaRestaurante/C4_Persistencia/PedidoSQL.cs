@@ -22,7 +22,7 @@ namespace C4_Persistencia
             Producto producto;
             producto = new Producto();
             producto.id = resultado.GetInt32(0);
-            producto.precio = Convert.ToDouble(resultado.GetDecimal(1));
+            producto.precio = float.Parse(resultado.GetDecimal(1).ToString());
             producto.descripcion = resultado.GetString(2);
             producto.fecha = resultado.GetDateTime(3);
             producto.imagen = resultado.GetString(4);

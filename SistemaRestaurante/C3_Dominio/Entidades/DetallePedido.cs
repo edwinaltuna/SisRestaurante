@@ -26,6 +26,10 @@ namespace C3_Dominio.Entidades
         {
             IGV = subtotal * (actual / 100) ;
         }
+        public double calcularSubTotalConIgv()
+        {
+            return cantidad * producto.precio * 1.18;
+        }
         #endregion metodos
     }
 }
