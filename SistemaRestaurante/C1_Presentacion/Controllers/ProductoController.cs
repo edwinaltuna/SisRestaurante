@@ -36,7 +36,7 @@ namespace C1_Presentacion.Controllers
             producto.descripcion = form["descripcion"];
             producto.fecha = DateTime.Parse(form["fecha"].ToString());
             producto.imagen = form["imagen"];
-            producto.estado = Boolean.Parse(form["estado"].ToString());
+            producto.estado = form["estado"].Contains("true");
             tipo.id = int.Parse(form["tipoProducto.id"].ToString());
             producto.tipoProducto = tipo;
             obj.RegistrarProducto(producto);
