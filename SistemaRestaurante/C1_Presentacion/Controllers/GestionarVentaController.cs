@@ -19,10 +19,43 @@ namespace C1_Presentacion.Controllers
             return View(listaVentas);
         }
 
+
         [HttpGet]
         public ActionResult Crear()
         {
-            return View();
+            List<Pedido> listaPedidos = generarPedidosFalsos();
+            List<Pedido> listaPedidosAgregados = new List<Pedido>();
+
+            return View(listaPedidos);
+        }
+
+        public List<Pedido> generarPedidosFalsos()
+        {
+            List<Pedido> tempPedido = new List<Pedido>();
+            for (int i = 0;i < 10; i++)
+            {
+                Pedido pedido = new Pedido();
+                pedido.id = i;
+                pedido.estado = 0;
+                pedido.fecha = DateTime.Now;
+                Mesa mesa = new Mesa();
+                mesa.id = 1;
+                mesa.numero = "10";
+                pedido.mesa = mesa;
+                Trabajador trabajador = new Trabajador();
+                trabajador.id = 1;
+                trabajador.nombres = "Paul";
+                trabajador.apellidoPaterno = "Farfan";
+                trabajador.apellidoMaterno = "Altuna";
+                TipoTrabajador tipoTrabajador = new TipoTrabajador();
+                tipoTrabajador.idTipoTrabajador = 1;
+                tipoTrabajador.estado = true;
+                tipoTrabajador.nombre = "Administrador";
+                trabajador.tipoTrabajador = tipoTrabajador;
+                pedido.trabajador = trabajador;
+                tempPedido.Add(pedido);
+            }
+            return tempPedido;
         }
 
         [HttpPost]
