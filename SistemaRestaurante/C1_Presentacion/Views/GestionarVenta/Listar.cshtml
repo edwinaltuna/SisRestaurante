@@ -108,8 +108,15 @@
                 "url": '@Url.Content("~/Recursos/lang/Spanish.json")'
             },
             "columnDefs": [
-                { "className": "dt-center", "targets": 5 }
-            ]
+                { "className": "dt-center", "targets": 5 },
+                {
+                    "render": function (data, type, row) {
+                        
+                        return "S/. " + parseFloat(data).toFixed(2);
+                    },
+                    "targets": 4
+                }
+               ]
         });
 
     });
