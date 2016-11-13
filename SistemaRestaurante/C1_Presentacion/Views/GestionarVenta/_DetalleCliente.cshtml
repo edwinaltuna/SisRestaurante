@@ -6,15 +6,23 @@
 
 <div class="col-lg-12">
     <div class="portlet">
-        <div class="portlet-heading">
+        @*<div class="portlet-heading">
             <h3 class="portlet-title text-dark">
                 @cliente.generarNombreCompleto()
             </h3>
             <div class="clearfix"></div>
-        </div>
+        </div>*@
         <div id="bg-default" class="panel-collapse collapse in">
             <div class="portlet-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo. vamus suscipit molestie vestibulum.
+                <div class="form-group">
+                    <label for="txtFechaNacimiento" class="col-sm-3 control-label">Fecha Nacimiento </label>
+                    <div class="col-sm-6">
+                        <input id="txtFechaNacimiento" name="txtFechaNacimiento" type="text" class="form-control" readonly="" value="@cliente.fechaNacimiento.ToShortDateString()">
+                    </div>
+                    <div class="col-sm-3">
+                        <button id="btnVerificarAccedeDescuento" type="button" class="btn btn-info btn-rounded m-b-5">Verificar Descuento por Cumpleaños</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

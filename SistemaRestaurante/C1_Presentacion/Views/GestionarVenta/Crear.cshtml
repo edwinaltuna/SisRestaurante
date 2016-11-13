@@ -20,9 +20,9 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form id="wizard-validation-form" action="#">
+                            <form id="wizard-validation-form" class="form-horizontal p-20" action="#">
                                 <div>
-                                    <h3>Seleccionar un pedido para la venta:</h3>
+                                    <h3>Seleccionar un pedido para la venta</h3>
                                     <section>
                                         <div class="row">
                                             @{ foreach (Pedido pedido in Model)
@@ -46,7 +46,7 @@
                                     <h3>Descuentos/Otros</h3>
                                     <section>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">Cliente: </label>
+                                            <label for="selectBusquedaCliente" class="col-sm-3 control-label">Cliente </label>
                                             <div class="col-sm-9">
                                                 <select name="selectBusquedaCliente" id="selectBusquedaCliente" class="select2">
                                                     <option></option>
@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group" style="margin-top:50px;">
+                                        <div class="form-group">
                                             <div id="clienteDetallePlaceholder" class="row">
 
                                             </div>
