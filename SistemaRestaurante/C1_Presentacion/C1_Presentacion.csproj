@@ -170,6 +170,12 @@
     <Content Include="Recursos\assets\jquery.validate\form-validation-init.js" />
     <Content Include="Recursos\assets\jquery.validate\jquery.validate.min.js" />
     <Content Include="Recursos\assets\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Recursos\assets\select2\.img\select2x2.html" />
+    <Content Include="Recursos\assets\select2\img\droparrows.png" />
+    <Content Include="Recursos\assets\select2\img\select2-spinner.gif" />
+    <Content Include="Recursos\assets\select2\img\select2.png" />
+    <Content Include="Recursos\assets\select2\select2.css" />
+    <Content Include="Recursos\assets\select2\select2.min.js" />
     <Content Include="Recursos\css\animate.css" />
     <Content Include="Recursos\css\bootstrap-reset.css" />
     <Content Include="Recursos\css\bootstrap.min.css" />

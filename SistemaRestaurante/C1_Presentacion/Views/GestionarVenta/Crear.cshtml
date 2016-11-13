@@ -2,6 +2,7 @@
 @model IEnumerable<Pedido>
 @{
     Layout = "~/Views/MasterPage/Master.cshtml";
+    List<Cliente> listaClientes =(List<Cliente>) ViewBag.listaClientes;
 }
 
 @section customCSS{
@@ -47,9 +48,12 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Cliente: </label>
                                             <div class="col-sm-9">
-                                                <select class="select2" data-placeholder="Buscar cliente...">
-                                                    <option value="#">&nbsp;</option>
-                                                    <option value="United States">United States</option>
+                                                <select id="selectBusquedaCliente" class="select2">
+                                                    <option></option>
+                                                    @foreach (Cliente cliente in listaClientes)
+                                                    {
+                                                    <option value="@cliente.id">@cliente.dni | @cliente.generarNombreCompleto()</option>
+                                                    }
 
                                                 </select>
                                             </div>
@@ -95,8 +99,10 @@
 
     @* Select2 Init *@
     <script type="text/javascript">
-        jQuery(".select2").select2({
-            width: '100%'
+        $("#selectBusquedaCliente").select2({
+            width: '100%',
+            placeholder: "Buscar un cliente...",
+            allowClear: true
         });
     </script>
 

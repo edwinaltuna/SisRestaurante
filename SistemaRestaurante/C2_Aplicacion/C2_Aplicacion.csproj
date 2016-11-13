@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="gestionarClienteServices.cs" />
     <Compile Include="gestionarMesaServices.cs" />
     <Compile Include="gestionarPedidoServices.cs" />
     <Compile Include="gestionarProductoServices.cs" />

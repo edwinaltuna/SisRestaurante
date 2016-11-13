@@ -24,8 +24,8 @@ namespace C1_Presentacion.Controllers
         public ActionResult Crear()
         {
             List<Pedido> listaPedidos = generarPedidosFalsos();
-            List<Pedido> listaPedidosAgregados = new List<Pedido>();
-
+            List<Cliente> listaClientes = gestionarClienteServices.Instancia.Listar();
+            ViewBag.listaClientes = listaClientes;
             return View(listaPedidos);
         }
 
