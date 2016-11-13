@@ -2,7 +2,7 @@
 @model IEnumerable<Pedido>
 @{
     Layout = "~/Views/MasterPage/Master.cshtml";
-    List<Cliente> listaClientes =(List<Cliente>) ViewBag.listaClientes;
+    List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];
 }
 
 @section customCSS{
@@ -58,6 +58,12 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="form-group" style="margin-top:50px;">
+                                            <div id="clienteDetallePlaceholder" class="row">
+
+                                            </div>
+                                        </div>
                                     </section>
                                     <h3>Resumen</h3>
                                     <section></section>
@@ -103,6 +109,26 @@
             width: '100%',
             placeholder: "Buscar un cliente...",
             allowClear: true
+        });
+        $("#selectBusquedaCliente").on("change", function (e) {
+            var datita = new Array();
+            datita.push(e.val);
+            $.ajax({
+                dataType: "html",
+                contentType: "application/json",
+                type: "POST",
+                url: '@Url.Action("CargarDetalleCliente", "GestionarVenta")',
+                data: JSON.stringify(datita),
+                beforeSend: function () {
+                    //nada xd tiene q verse como automatico
+                },
+                success: function (detalleCliente) {
+                    $('#clienteDetallePlaceholder').html(detalleCliente);
+                },
+                error: function (xhr) {
+                    alert('Contacte al administrador.')//cambiar swAl
+                }
+            });
         });
     </script>
 

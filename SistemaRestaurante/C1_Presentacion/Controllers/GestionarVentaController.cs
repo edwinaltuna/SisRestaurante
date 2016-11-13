@@ -25,7 +25,7 @@ namespace C1_Presentacion.Controllers
         {
             List<Pedido> listaPedidos = generarPedidosFalsos();
             List<Cliente> listaClientes = gestionarClienteServices.Instancia.Listar();
-            ViewBag.listaClientes = listaClientes;
+            Session["listaClientes"] = listaClientes;
             return View(listaPedidos);
         }
 
@@ -66,6 +66,13 @@ namespace C1_Presentacion.Controllers
             parametros.Add(data[0]);
             parametros.Add(data[1] == 0 ? 1 : 0);
             return PartialView("_CambiarEstado",parametros);
+        }
+
+        [HttpPost]
+        public ActionResult CargarDetalleCliente(int[] data)
+        {
+            TempData["idCliente"] = data[0];
+            return PartialView("_DetalleCliente");
         }
 
         [HttpPost]
