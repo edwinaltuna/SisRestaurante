@@ -32,7 +32,7 @@ namespace C1_Presentacion.Controllers
         public List<Pedido> generarPedidosFalsos()
         {
             List<Pedido> tempPedido = new List<Pedido>();
-            for (int i = 0;i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Pedido pedido = new Pedido();
                 pedido.id = i;
@@ -61,11 +61,11 @@ namespace C1_Presentacion.Controllers
         [HttpPost]
         public ActionResult CambiarEstado(int[] data)
         {
-            bool cambio = gestionarVentaServices.Instancia.CambiarEstadoVenta(data[0], data[1]== 0 ? 1 : 0);
+            bool cambio = gestionarVentaServices.Instancia.CambiarEstadoVenta(data[0], data[1] == 0 ? 1 : 0);
             List<int> parametros = new List<int>();
             parametros.Add(data[0]);
             parametros.Add(data[1] == 0 ? 1 : 0);
-            return PartialView("_CambiarEstado",parametros);
+            return PartialView("_CambiarEstado", parametros);
         }
 
         [HttpPost]
@@ -73,6 +73,21 @@ namespace C1_Presentacion.Controllers
         {
             TempData["idCliente"] = data[0];
             return PartialView("_DetalleCliente");
+        }
+
+        [HttpPost]
+        public ActionResult VerificarAccedeDescuento(int[] data)
+        {
+            List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];  
+            Cliente cliente = listaClientes.Find(item => item.id == data[0]);
+            //cliente.fechaNacimiento = DateTime.Today; //para verificar que funciona owo
+            if (cliente.fechaNacimiento.Equals(DateTime.Today))
+            {
+                return Content("Es el cumpleaños del cliente 7u7");
+            }else
+            {
+                return Content("Que triste no hay descuento OWO");
+            }
         }
 
         [HttpPost]

@@ -20,10 +20,41 @@
                         <input id="txtFechaNacimiento" name="txtFechaNacimiento" type="text" class="form-control" readonly="" value="@cliente.fechaNacimiento.ToShortDateString()">
                     </div>
                     <div class="col-sm-3">
-                        <button id="btnVerificarAccedeDescuento" type="button" class="btn btn-info btn-rounded m-b-5">Verificar Descuento por Cumpleaños</button>
+                        <button id="btnVerificarAccedeDescuento" onclick="verificarAccedeDescuento(@cliente.id)" type="button" class="btn btn-info btn-rounded m-b-5">Verificar Descuento por Cumpleaños</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+    <script type="text/javascript">
+        function verificarAccedeDescuento(idCliente) {
+            var data = new Array();
+            data.push(idCliente);
+            //console.log(data);
+            $.ajax({
+                dataType: "html",
+                contentType: "application/json",
+                type: "POST",
+                url: '@Url.Action("VerificarAccedeDescuento", "GestionarVenta")',
+                data: JSON.stringify(data),
+                beforeSend: function () {
+                    $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+                },
+                success: function (msg) {
+                    alert(msg);
+                },
+                complete: function () {
+                    var $pd = $('#panelNuevaVenta').find('.panel-disabled');
+                    $pd.fadeOut('fast', function () {
+                        $pd.remove();
+                    });
+                },
+                error: function (xhr) {
+                    alert('Contacte al administrador.')//cambiar swAl
+                }
+
+            });
+        };
+    </script>
