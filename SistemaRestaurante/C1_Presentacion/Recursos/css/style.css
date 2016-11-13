@@ -1313,7 +1313,8 @@ div#datatable-buttons_info {
 
 .wizard > .content {
   background: #fff;
-  min-height: 240px;
+  /*min-height: 240px;*/
+  min-height: 500px;
 }
 
 .wizard > .content > .body {
