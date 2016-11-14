@@ -42,8 +42,29 @@
                 beforeSend: function () {
                     $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
                 },
-                success: function (msg) {
-                    alert(msg);
+                success: function (response) {
+                    var local = JSON.parse(response);
+                    switch(local[0].estado)
+                    {
+                        case 'success':
+                            console.log('scuccess')
+                            swal({
+                                title: local[0].title,
+                                text: local[0].mensaje,
+                                imageUrl: '../Recursos/img/tortita7u7.png',
+                                imageWidth: 455,
+                                imageHeight: 340,
+                            })
+                            break;
+                        case 'error':
+                            console.log('error')
+                            swal({
+                                title: local[0].title,
+                                text: local[0].mensaje,
+                                type: local[0].estado
+                            })
+                            break;
+                    }
                 },
                 complete: function () {
                     var $pd = $('#panelNuevaVenta').find('.panel-disabled');

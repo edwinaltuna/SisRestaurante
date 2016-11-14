@@ -83,10 +83,12 @@ namespace C1_Presentacion.Controllers
             //cliente.fechaNacimiento = DateTime.Today; //para verificar que funciona owo
             if (cliente.fechaNacimiento.Equals(DateTime.Today))
             {
-                return Content("Es el cumpleaños del cliente 7u7");
-            }else
+                return Json(Enumerable.Range(0, 1).Select(i => new { title="En hora buena",mensaje = "Es el cumpleaños de "+cliente.nombres+" y tiene acceso a un descuento" , estado = "success" }),JsonRequestBehavior.AllowGet);
+
+            }
+            else
             {
-                return Content("Que triste no hay descuento OWO");
+                return Json(Enumerable.Range(0, 1).Select(i => new { title = "Mala suerte", mensaje = "No es el cumpleaños de "+cliente.nombres, estado = "error" }), JsonRequestBehavior.AllowGet);
             }
         }
 
