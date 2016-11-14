@@ -84,7 +84,7 @@ namespace C1_Presentacion.Controllers
             {
                 // TODO: Add delete logic here
                 obj.Delete(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Producto");
             }
             catch
             {
