@@ -8,8 +8,8 @@ namespace C3_Dominio.Entidades
 {
     public class Cliente : Persona
     {        
-        string ruc {get; set; }
-        TipoCliente tipoCliente {get; set; }
+        public string ruc {get; set; }
+        public TipoCliente tipoCliente {get; set; }
 
         #region metodos
         public bool validarRUC()

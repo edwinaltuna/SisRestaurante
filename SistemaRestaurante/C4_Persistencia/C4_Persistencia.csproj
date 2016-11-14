@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteSQL.cs" />
     <Compile Include="GestorDAOSQL.cs" />
     <Compile Include="MesaSQL.cs" />
     <Compile Include="PedidoSQL.cs" />

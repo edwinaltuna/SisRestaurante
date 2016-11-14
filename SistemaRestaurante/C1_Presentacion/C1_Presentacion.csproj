@@ -161,9 +161,23 @@
     <Content Include="Recursos\assets\datatables\vfs_fonts.js" />
     <Content Include="Recursos\assets\font-awesome\css\font-awesome.css" />
     <Content Include="Recursos\assets\font-awesome\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Recursos\assets\form-wizard\bootstrap-validator.min.js" />
+    <Content Include="Recursos\assets\form-wizard\jquery.steps.css" />
+    <Content Include="Recursos\assets\form-wizard\jquery.steps.min.js" />
+    <Content Include="Recursos\assets\form-wizard\wizard-init.js" />
     <Content Include="Recursos\assets\ionicon\css\ionicons.min.css" />
     <Content Include="Recursos\assets\ionicon\fonts\ioniconsbab9.svg" />
+    <Content Include="Recursos\assets\jquery.validate\form-validation-init.js" />
+    <Content Include="Recursos\assets\jquery.validate\jquery.validate.min.js" />
     <Content Include="Recursos\assets\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Recursos\assets\select2\.img\select2x2.html" />
+    <Content Include="Recursos\assets\select2\img\droparrows.png" />
+    <Content Include="Recursos\assets\select2\img\select2-spinner.gif" />
+    <Content Include="Recursos\assets\select2\img\select2.png" />
+    <Content Include="Recursos\assets\select2\select2.css" />
+    <Content Include="Recursos\assets\select2\select2.min.js" />
+    <Content Include="Recursos\assets\sweet-alert2\sweetalert2.min.css" />
+    <Content Include="Recursos\assets\sweet-alert2\sweetalert2.min.js" />
     <Content Include="Recursos\css\animate.css" />
     <Content Include="Recursos\css\bootstrap-reset.css" />
     <Content Include="Recursos\css\bootstrap.min.css" />
@@ -173,6 +187,7 @@
     <Content Include="Recursos\img\avatar-2.jpg" />
     <Content Include="Recursos\img\favicon_1.ico" />
     <Content Include="Recursos\img\mesa.jpg" />
+    <Content Include="Recursos\img\tortita7u7.png" />
     <Content Include="Recursos\js\bootstrap.min.js" />
     <Content Include="Recursos\js\datatables.init.js" />
     <Content Include="Recursos\js\jquery.app.js" />
@@ -262,7 +277,9 @@
     <Content Include="Views\Producto\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Recursos\lang\Spanish.json" />
+    <Content Include="Recursos\lang\Spanish.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_CambiarEstado.cshtml" />
@@ -282,15 +299,27 @@
   <ItemGroup>
     <Content Include="Recursos\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Recursos\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Recursos\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Recursos\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Recursos\fonts\glyphicons-halflings-regulard41d.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_DetalleVenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Reportes\ReporteProducto.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarVenta\Crear.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarVenta\_DetalleCliente.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

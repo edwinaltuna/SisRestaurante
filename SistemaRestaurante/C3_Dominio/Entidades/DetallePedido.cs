@@ -20,12 +20,14 @@ namespace C3_Dominio.Entidades
         #region metodos
         public double calcularSubTotal()
         {
-            return cantidad * producto.precio;
+            subtotal =  cantidad * producto.precio;
+            return subtotal;
         }
 
         public void calcularIGV(float actual)
         {
-            IGV = subtotal * (actual / 100) ;
+            calcularSubTotal();
+            IGV = subtotal * actual ;
         }
         public double calcularSubTotalConIgv()
         {

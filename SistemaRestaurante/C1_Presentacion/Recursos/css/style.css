@@ -673,6 +673,21 @@ button.confirm {
   margin-top: 0;
 }
 
+.portlet -portlet-heading .portlet-bottom-margin-title{
+
+  font-size: 16px;
+  font-weight: 700;
+  float: right;
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+}
+
+.portlet-bottom-margin-title > .portlet-child {
+  position: relative;
+  left: 50%;
+}
+
 .portlet .portlet-heading .portlet-widgets {
   position: relative;
   text-align: right;
@@ -1298,7 +1313,8 @@ div#datatable-buttons_info {
 
 .wizard > .content {
   background: #fff;
-  min-height: 240px;
+  /*min-height: 240px;*/
+  min-height: 500px;
 }
 
 .wizard > .content > .body {
