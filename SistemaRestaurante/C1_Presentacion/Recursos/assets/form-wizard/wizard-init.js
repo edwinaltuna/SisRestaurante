@@ -42,12 +42,12 @@
                     return true;
                 } else {
                     $('#panelBodyNuevaVenta').notify({
-                        title: "Alerta",
+                        title: "Aviso",
                         text: "Debe seleccionar un pedido antes de proceder con el siguiente paso.",
-                        image: "<i class='fa fa-warning'></i>"
+                        image: "<i class='fa fa-info'></i>"
                     }, {
                         style: 'metro',
-                        className: 'warning',
+                        className: 'info',
                         showAnimation: "show",
                         position: 'top center',
                         showDuration: 0,
