@@ -40,6 +40,37 @@
         });
     },
 
+    //notificacion desde un elemento
+    Notification.prototype.fromElementNotify = function (selector, style, position, title, text) {
+        var icon = "fa fa-adjust";
+        if (style == "error") {
+            icon = "fa fa-exclamation";
+        } else if (style == "warning") {
+            icon = "fa fa-warning";
+        } else if (style == "success") {
+            icon = "fa fa-check";
+        } else if (style == "info") {
+            icon = "fa fa-question";
+        } else {
+            icon = "fa fa-adjust";
+        }
+        $('#'+selector).notify({
+            title: title,
+            text: text,
+            image: "<i class='" + icon + "'></i>"
+        }, {
+            style: 'metro',
+            className: style,
+            showAnimation: "show",
+            position: position,
+            showDuration: 0,
+            hideDuration: 0,
+            autoHideDelay: 5000,
+            autoHide: true,
+            clickToHide: true
+        });
+    }
+
     //auto hide notification
     Notification.prototype.autoHideNotify = function (style,position, title, text) {
         var icon = "fa fa-adjust";

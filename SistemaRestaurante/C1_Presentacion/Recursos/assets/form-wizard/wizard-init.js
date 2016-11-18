@@ -40,22 +40,8 @@
                 });
                 if (conteo != -1) {
                     return true;
-                } else {
-                    $('#panelBodyNuevaVenta').notify({
-                        title: "Aviso",
-                        text: "Debe seleccionar un pedido antes de proceder con el siguiente paso.",
-                        image: "<i class='fa fa-info'></i>"
-                    }, {
-                        style: 'metro',
-                        className: 'info',
-                        showAnimation: "show",
-                        position: 'top center',
-                        showDuration: 0,
-                        hideDuration: 0,
-                        autoHideDelay: 5000,
-                        autoHide: true,
-                        clickToHide: true
-                    });
+                } else {                    
+                    $.Notification.fromElementNotify('panelBodyNuevaVenta', 'info', 'top center', 'Aviso', 'Debe seleccionar un pedido antes de proceder con el siguiente paso');
                     return false;
                 }
                 
