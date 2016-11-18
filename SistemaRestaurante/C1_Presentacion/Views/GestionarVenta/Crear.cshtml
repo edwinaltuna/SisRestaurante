@@ -25,10 +25,10 @@
                                 <div>
                                     <h3>Seleccionar un pedido para la venta</h3>
                                     <section>
-                                        <div class="row">
+                                        <div class="row" id="contenedorPedidos">
                                             @{ foreach (Pedido pedido in Model)
                                                 {
-                                                    <div class="col-lg-4">
+                                                    <div id="div_pedido_@pedido.id" class="col-lg-4">
                                                         <div class="portlet">
                                                             <div class="portlet-heading bg-info">
                                                                 <h3 class="portlet-title"></h3>
