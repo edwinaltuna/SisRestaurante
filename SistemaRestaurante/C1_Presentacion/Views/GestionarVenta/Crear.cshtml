@@ -2,7 +2,7 @@
 @model IEnumerable<Pedido>
 @{
     Layout = "~/Views/MasterPage/Master.cshtml";
-    List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];
+    List<Cliente> listaClientes = (List<Cliente>)Session["listaClientes"];
 }
 
 @section customCSS{
@@ -14,7 +14,7 @@
 <div class="wraper container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <div id="panelNuevaVenta"class="panel panel-color panel-purple">
+            <div id="panelNuevaVenta" class="panel panel-color panel-purple">
                 <div class="panel-heading">
                     <h3 class="panel-title">Pedidos Pendientes</h3>
                 </div>
@@ -28,10 +28,10 @@
                                         <div class="row" id="contenedorPedidos">
                                             @{ foreach (Pedido pedido in Model)
                                                 {
-                                                    <div id="div_pedido_@pedido.id" class="col-lg-4">
+                                                    <div id="div_pedido_@pedido.id" class="col-lg-4 grow">
                                                         <div class="portlet">
-                                                            <div class="portlet-heading bg-info">
-                                                                <h3 class="portlet-title"></h3>
+                                                            <div class="portlet-heading bg-info" onclick="confirmarSeleccionPedido(@pedido.id)">
+                                                                <h3 class="portlet-title">@pedido.mesa.numero</h3>
                                                             </div>
                                                             <div id="bg-success" class="panel-collapse collapse in">
                                                                 <div class="portlet-body">
@@ -53,7 +53,7 @@
                                                     <option></option>
                                                     @foreach (Cliente cliente in listaClientes)
                                                     {
-                                                    <option value="@cliente.id">@cliente.dni | @cliente.generarNombreCompleto()</option>
+                                                        <option value="@cliente.id">@cliente.dni | @cliente.generarNombreCompleto()</option>
                                                     }
 
                                                 </select>
@@ -67,9 +67,7 @@
                                         </div>
                                     </section>
                                     <h3>Resumen</h3>
-                                    <section>
-
-                                    </section>
+                                    <section></section>
                                     <h3>Confirmación</h3>
                                     <section>
                                         <div class="form-group clearfix">
@@ -135,6 +133,77 @@
                 }
             });
         });
+    </script>
+
+    @*Pedidos handling*@
+    <script type="text/javascript">
+        var pedidos = $("div").filter(function () {
+            return this.id.match(/div_pedido_/);
+        })
+
+        $.each(pedidos, function (i, v) {
+            $(this).css('cursor', 'pointer');
+        })
+
+
+        var selected = false;
+        function confirmarSeleccionPedido(idPedido) {
+            swal({
+                title: selected ? '¿Está seguro de remover el pedido?' : '¿Está seguro de agregar el pedido?',
+                text: "Para seleccionar otro, clickea de nuevo el pedido y luego clickea el nuevo",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: selected ? 'Sí, remover pedido.':'Sí, agregar pedido.',
+                cancelButtonText: 'No, cancelar.',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then(function () {
+
+                if (!selected) {
+                    selected = true;
+                    $.each(pedidos, function (i, v) {
+                        $(this).css('-webkit-filter', 'blur(10px)');
+                    })
+                    $("#div_pedido_" + idPedido).css('-webkit-filter', 'blur(0px)');
+                    swal(
+                      'Éxito',
+                      'El pedido fue agregado a la venta',
+                      'success'
+                    )
+                } else {
+                    selected = false;
+                    limpiarSeleccionPedido();
+                    swal(
+                      'Éxito',
+                      'El pedido se quitó de la venta.',
+                      'success'
+                    )
+                }
+
+                
+            }, function (dismiss) {
+                // dismiss can be 'cancel', 'overlay',
+                // 'close', and 'timer'
+                if (dismiss === 'cancel') {
+                    swal(
+                      'Operación cancelada.',
+                      selected?'No se removió el pedido.':'No se seleccionó el pedido.',
+                      'error'
+                    )
+                }
+            });
+        }
+
+        function limpiarSeleccionPedido() {
+            $.each(pedidos, function (i, v) {
+                $(this).css('-webkit-filter', 'blur(0px)');
+            })
+        }
+
+
     </script>
 
 }
