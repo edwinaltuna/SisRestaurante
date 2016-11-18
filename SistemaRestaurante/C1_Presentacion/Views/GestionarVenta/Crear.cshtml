@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="~/Recursos/assets/form-wizard/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="~/Recursos/assets/select2/select2.css">
     <link href="~/Recursos/assets/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Recursos/assets/notifications/notification.css" rel="stylesheet" type="text/css">
 }
 
 <div class="wraper container-fluid">
@@ -18,7 +19,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Pedidos Pendientes</h3>
                 </div>
-                <div class="panel-body">
+                <div id="panelBodyNuevaVenta" class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
                             <form id="wizard-validation-form" class="form-horizontal p-20" action="#">
@@ -72,7 +73,7 @@
                                     <section>
                                         <div class="form-group clearfix">
                                             <div class="col-lg-12">
-                                                <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="required">
+                                                <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="">
                                                 <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
                                             </div>
                                         </div>
@@ -106,6 +107,13 @@
 
     @*Swal2 JS*@
     <script src="~/Recursos/assets/sweet-alert2/sweetalert2.min.js"></script>
+
+    @*Notifications JS*@
+    <script src="~/Recursos/assets/notifications/notify.min.js"></script>    
+    <script src="~/Recursos/assets/notifications/notify-metro.js"></script>
+    <script src="~/Recursos/assets/notifications/notifications.js"></script>
+    
+
     @* Select2 Init *@
     <script type="text/javascript">
         $("#selectBusquedaCliente").select2({
@@ -163,34 +171,80 @@
             }).then(function () {
 
                 if (!selected) {
-                    selected = true;
-                    $.each(pedidos, function (i, v) {
-                        $(this).css('-webkit-filter', 'blur(10px)');
-                    })
-                    $("#div_pedido_" + idPedido).css('-webkit-filter', 'blur(0px)');
-                    swal(
-                      'Éxito',
-                      'El pedido fue agregado a la venta',
-                      'success'
-                    )
+                    var data = new Array();
+                    data.push(idPedido);
+                    $.ajax({
+                        dataType: "html",
+                        contentType: "application/json",
+                        type: "POST",
+                        url: '@Url.Action("SeleccionarPedido", "GestionarVenta")',
+                        //traditional : true,
+                        data: JSON.stringify(data),
+                        success: function (pedido) {
+                            selected = true;
+                            $.each(pedidos, function (i, v) {
+                                $(this).css('-webkit-filter', 'blur(10px)');
+                            })
+                            $("#div_pedido_" + idPedido).css('-webkit-filter', 'blur(0px)');
+                            swal(
+                              'Éxito',
+                              'El pedido fue agregado a la venta',
+                              'success'
+                            )
+                        },
+                        error: function (xhr) {
+                            swal(
+                              'Error!',
+                              'No se pudo realizar la operación, contacte al área de IT.',
+                              'error'
+                            )
+                        }
+
+                    });
+
+
                 } else {
-                    selected = false;
-                    limpiarSeleccionPedido();
-                    swal(
-                      'Éxito',
-                      'El pedido se quitó de la venta.',
-                      'success'
-                    )
+
+                    var data = new Array();
+                    data.push(-1);
+                    $.ajax({
+                        dataType: "html",
+                        contentType: "application/json",
+                        type: "POST",
+                        url: '@Url.Action("SeleccionarPedido", "GestionarVenta")',
+                        //traditional : true,
+                        data: JSON.stringify(data),
+                        success: function (pedido) {
+                            selected = false;
+                            limpiarSeleccionPedido();
+                            swal(
+                              'Éxito',
+                              'El pedido se quitó de la venta.',
+                              'success'
+                            )
+                        },
+                        error: function (xhr) {
+                            swal(
+                              'Error!',
+                              'No se pudo realizar la operación, contacte al área de IT.',
+                              'error'
+                            )
+                        }
+
+                    });
+
+
+                    
                 }
 
-                
+
             }, function (dismiss) {
                 // dismiss can be 'cancel', 'overlay',
                 // 'close', and 'timer'
                 if (dismiss === 'cancel') {
                     swal(
                       'Operación cancelada.',
-                      selected?'No se removió el pedido.':'No se seleccionó el pedido.',
+                      selected?'No se removió el pedido.':'No se agregó el pedido.',
                       'error'
                     )
                 }
@@ -199,7 +253,7 @@
 
         function limpiarSeleccionPedido() {
             $.each(pedidos, function (i, v) {
-                $(this).css('-webkit-filter', 'blur(0px)');
+                $(this).css('-webkit-filter', 'none');
             })
         }
 

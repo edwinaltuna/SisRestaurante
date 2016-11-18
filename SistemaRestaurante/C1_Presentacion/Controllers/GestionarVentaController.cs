@@ -25,7 +25,9 @@ namespace C1_Presentacion.Controllers
         {
             List<Pedido> listaPedidos = generarPedidosFalsos();
             List<Cliente> listaClientes = gestionarClienteServices.Instancia.Listar();
+            int idPedido = -1;
             Session["listaClientes"] = listaClientes;
+            Session["idPedido"] = idPedido;
             return View(listaPedidos);
         }
 
@@ -90,6 +92,13 @@ namespace C1_Presentacion.Controllers
             {
                 return Json(Enumerable.Range(0, 1).Select(i => new { title = "Mala suerte", mensaje = "No es el cumpleaños de "+cliente.nombres, estado = "error" }), JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public ActionResult SeleccionarPedido(int[] data)
+        {
+            Session["idPedido"] = data[0];
+            return new EmptyResult();
         }
 
         [HttpPost]

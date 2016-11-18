@@ -29,8 +29,37 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
-                $form_container.validate().settings.ignore = ":disabled,:hidden";
-                return $form_container.valid();
+                var pedidos = $("div").filter(function () {
+                    return this.id.match(/div_pedido_/);
+                })
+                var conteo = -1;
+                $.each(pedidos, function (i, v) {
+                    if ($(this).css('-webkit-filter') == 'blur(0px)') {
+                        conteo++;
+                    }
+                });
+                if (conteo != -1) {
+                    return true;
+                } else {
+                    $('#panelBodyNuevaVenta').notify({
+                        title: "Alerta",
+                        text: "Debe seleccionar un pedido antes de proceder con el siguiente paso.",
+                        image: "<i class='fa fa-warning'></i>"
+                    }, {
+                        style: 'metro',
+                        className: 'warning',
+                        showAnimation: "show",
+                        position: 'top center',
+                        showDuration: 0,
+                        hideDuration: 0,
+                        autoHideDelay: 5000,
+                        autoHide: true,
+                        clickToHide: true
+                    });
+                    return false;
+                }
+                
+                return false;
             },
             onFinishing: function (event, currentIndex) {
                 $form_container.validate().settings.ignore = ":disabled";
@@ -38,6 +67,15 @@
             },
             onFinished: function (event, currentIndex) {
                 alert("Submitted!");
+            },
+            labels: {
+                cancel: "Cancelar",
+                current: "Paso actual",
+                pagination: "Paginación",
+                finish: "Guardar Venta",
+                next: "Siguiente",
+                previous: "Anterior",
+                loading: "Cargando..."
             }
         });
 
