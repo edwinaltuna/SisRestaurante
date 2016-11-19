@@ -52,11 +52,11 @@
                     $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
                 },
                 success: function (response) {
+                    $.FormWizard.secondStepValidaFecha = true;
                     var local = JSON.parse(response);
                     switch(local[0].estado)
                     {
                         case 'success':
-                            console.log('scuccess')
                             swal({
                                 title: local[0].title,
                                 text: local[0].mensaje,
@@ -66,7 +66,6 @@
                             })
                             break;
                         case 'error':
-                            console.log('error')
                             swal({
                                 title: local[0].title,
                                 text: local[0].mensaje,
@@ -101,6 +100,7 @@
                     $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
                 },
                 success: function (response) {
+                    $.FormWizard.secondStepValidaCodigoPromo = true;
                     var local = JSON.parse(response);
                     switch (local[0].estado) {
                         case 'success':
