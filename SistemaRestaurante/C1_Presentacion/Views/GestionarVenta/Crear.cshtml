@@ -2,36 +2,37 @@
 @model IEnumerable<Pedido>
 @{
     Layout = "~/Views/MasterPage/Master.cshtml";
-    List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];
+    List<Cliente> listaClientes = (List<Cliente>)Session["listaClientes"];
 }
 
 @section customCSS{
     <link rel="stylesheet" type="text/css" href="~/Recursos/assets/form-wizard/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="~/Recursos/assets/select2/select2.css">
     <link href="~/Recursos/assets/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Recursos/assets/notifications/notification.css" rel="stylesheet" type="text/css">
 }
 
 <div class="wraper container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <div id="panelNuevaVenta"class="panel panel-color panel-purple">
+            <div id="panelNuevaVenta" class="panel panel-color panel-purple">
                 <div class="panel-heading">
                     <h3 class="panel-title">Pedidos Pendientes</h3>
                 </div>
-                <div class="panel-body">
+                <div id="panelBodyNuevaVenta" class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
                             <form id="wizard-validation-form" class="form-horizontal p-20" action="#">
                                 <div>
                                     <h3>Seleccionar un pedido para la venta</h3>
                                     <section>
-                                        <div class="row">
+                                        <div class="row" id="contenedorPedidos">
                                             @{ foreach (Pedido pedido in Model)
                                                 {
-                                                    <div class="col-lg-4">
+                                                    <div id="div_pedido_@pedido.id" class="col-lg-4 grow">
                                                         <div class="portlet">
-                                                            <div class="portlet-heading bg-info">
-                                                                <h3 class="portlet-title"></h3>
+                                                            <div class="portlet-heading bg-info" onclick="confirmarSeleccionPedido(@pedido.id)">
+                                                                <h3 class="portlet-title">@pedido.mesa.numero</h3>
                                                             </div>
                                                             <div id="bg-success" class="panel-collapse collapse in">
                                                                 <div class="portlet-body">
@@ -53,7 +54,7 @@
                                                     <option></option>
                                                     @foreach (Cliente cliente in listaClientes)
                                                     {
-                                                    <option value="@cliente.id">@cliente.dni | @cliente.generarNombreCompleto()</option>
+                                                        <option value="@cliente.id">@cliente.dni | @cliente.generarNombreCompleto()</option>
                                                     }
 
                                                 </select>
@@ -67,14 +68,12 @@
                                         </div>
                                     </section>
                                     <h3>Resumen</h3>
-                                    <section>
-
-                                    </section>
+                                    <section></section>
                                     <h3>Confirmación</h3>
                                     <section>
                                         <div class="form-group clearfix">
                                             <div class="col-lg-12">
-                                                <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="required">
+                                                <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="">
                                                 <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
                                             </div>
                                         </div>
@@ -108,6 +107,13 @@
 
     @*Swal2 JS*@
     <script src="~/Recursos/assets/sweet-alert2/sweetalert2.min.js"></script>
+
+    @*Notifications JS*@
+    <script src="~/Recursos/assets/notifications/notify.min.js"></script>    
+    <script src="~/Recursos/assets/notifications/notify-metro.js"></script>
+    <script src="~/Recursos/assets/notifications/notifications.js"></script>
+    
+
     @* Select2 Init *@
     <script type="text/javascript">
         $("#selectBusquedaCliente").select2({
@@ -135,6 +141,123 @@
                 }
             });
         });
+    </script>
+
+    @*Pedidos handling*@
+    <script type="text/javascript">
+        var pedidos = $("div").filter(function () {
+            return this.id.match(/div_pedido_/);
+        })
+
+        $.each(pedidos, function (i, v) {
+            $(this).css('cursor', 'pointer');
+        })
+
+
+        var selected = false;
+        function confirmarSeleccionPedido(idPedido) {
+            swal({
+                title: selected ? '¿Está seguro de remover el pedido?' : '¿Está seguro de agregar el pedido?',
+                text: "Para seleccionar otro, clickea de nuevo el pedido y luego clickea el nuevo",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: selected ? 'Sí, remover pedido.':'Sí, agregar pedido.',
+                cancelButtonText: 'No, cancelar.',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then(function () {
+
+                if (!selected) {
+                    var data = new Array();
+                    data.push(idPedido);
+                    $.ajax({
+                        dataType: "html",
+                        contentType: "application/json",
+                        type: "POST",
+                        url: '@Url.Action("SeleccionarPedido", "GestionarVenta")',
+                        //traditional : true,
+                        data: JSON.stringify(data),
+                        success: function (pedido) {
+                            selected = true;
+                            $.each(pedidos, function (i, v) {
+                                $(this).css('-webkit-filter', 'blur(10px)');
+                            })
+                            $("#div_pedido_" + idPedido).css('-webkit-filter', 'blur(0px)');
+                            swal(
+                              'Éxito',
+                              'El pedido fue agregado a la venta',
+                              'success'
+                            )
+                        },
+                        error: function (xhr) {
+                            swal(
+                              'Error!',
+                              'No se pudo realizar la operación, contacte al área de IT.',
+                              'error'
+                            )
+                        }
+
+                    });
+
+
+                } else {
+
+                    var data = new Array();
+                    data.push(-1);
+                    $.ajax({
+                        dataType: "html",
+                        contentType: "application/json",
+                        type: "POST",
+                        url: '@Url.Action("SeleccionarPedido", "GestionarVenta")',
+                        //traditional : true,
+                        data: JSON.stringify(data),
+                        success: function (pedido) {
+                            selected = false;
+                            limpiarSeleccionPedido();
+                            swal(
+                              'Éxito',
+                              'El pedido se quitó de la venta.',
+                              'success'
+                            )
+                        },
+                        error: function (xhr) {
+                            swal(
+                              'Error!',
+                              'No se pudo realizar la operación, contacte al área de IT.',
+                              'error'
+                            )
+                        }
+
+                    });
+
+
+                    
+                }
+
+
+            }, function (dismiss) {
+                // dismiss can be 'cancel', 'overlay',
+                // 'close', and 'timer'
+                if (dismiss === 'cancel') {
+                    swal(
+                      'Operación cancelada.',
+                      selected?'No se removió el pedido.':'No se agregó el pedido.',
+                      'error'
+                    )
+                }
+            });
+        }
+
+        function limpiarSeleccionPedido() {
+            $.each(pedidos, function (i, v) {
+                $(this).css('-webkit-filter', 'none');
+            })
+        }
+
+
     </script>
 
 }

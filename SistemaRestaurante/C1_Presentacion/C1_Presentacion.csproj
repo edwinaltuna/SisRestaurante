@@ -175,9 +175,10 @@
     <Content Include="Recursos\assets\magnific-popup\magnific-popup.css" />
     <Content Include="Recursos\assets\magnific-popup\magnific-popup.js" />
     <Content Include="Recursos\assets\material-design-iconic-font\css\material-design-iconic-font.min.css" />
-    <Content Include="Recursos\assets\modal-effect\css\component.css" />
-    <Content Include="Recursos\assets\modal-effect\js\classie.js" />
-    <Content Include="Recursos\assets\modal-effect\js\modalEffects.js" />
+    <Content Include="Recursos\assets\notifications\notification.css" />
+    <Content Include="Recursos\assets\notifications\notifications.js" />
+    <Content Include="Recursos\assets\notifications\notify-metro.js" />
+    <Content Include="Recursos\assets\notifications\notify.min.js" />
     <Content Include="Recursos\assets\select2\.img\select2x2.html" />
     <Content Include="Recursos\assets\select2\img\droparrows.png" />
     <Content Include="Recursos\assets\select2\img\select2-spinner.gif" />

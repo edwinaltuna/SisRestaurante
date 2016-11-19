@@ -139,6 +139,36 @@ namespace C4_Persistencia
             return tempVenta;
         }
 
+        public bool GuardarVenta(Venta venta)
+        {
+            bool guardo = false;
+            using (SqlConnection conexionActual = gestorDAOSQL.abrirConexion())
+            {
+                using (SqlCommand cmd = gestorDAOSQL.ObtenerComandoSP("SP_GuardarVenta", conexionActual))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@param_numero_serie", venta.SerieNumero);
+                        cmd.Parameters.AddWithValue("@param_descuento",venta.descuento );
+                        cmd.Parameters.AddWithValue("@param_id_trabajador", venta.trabajador.id);
+                        cmd.Parameters.AddWithValue("@param_id_pedido", venta.pedido.id);
+                        cmd.Parameters.AddWithValue("@param_fecha", venta.fecha);
+                        conexionActual.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            guardo = true;
+                        }
+                        return guardo;
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }            
+        }
+
         #endregion metodos
     }
 }
