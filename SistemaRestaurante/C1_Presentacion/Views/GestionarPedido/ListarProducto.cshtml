@@ -6,98 +6,88 @@
     Mesa t = (Mesa)Session["mesa"];
     Trabajador tr = (Trabajador)Session["trabajador"];
 }
-<div class="page-title">
+@*<div class="page-title">
     <h3 class="title">Principal</h3>
+</div>*@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title" id="myLargeModalLabel">Busqueda Producto</h4>
 </div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title"> Principal </h3>
-    </div>
-    <div class="panel-body">
-        <div class="form-group">
-            <table id="datatable" style="width:100%">
-                @{
-                    int numceldas = 0;
-                    foreach (var m in Model)
+<div class="modal-body">
+    <div class="form-group">
+        <table id="datatable" style="width:100%">
+            @{
+                int numceldas = 0;
+                foreach (var m in Model)
+                {
+                    if (numceldas == 0)
                     {
-                        if (numceldas == 0)
-                        {
-                            <tr></tr>
-                        }
-                        numceldas++;
-                        <td align="center" width="25%">
-                            <img src="~/Imagenes/@m.imagen" style="width:100px; height:100px" />
-                            <h3 style="color:gray; font-family:Arial; font-size: 12px">
-                                Nombre:@m.descripcion
-                            </h3>
-                            <h3 style="color:gray; font-family:Arial; font-size: 12px">
-                                Detalle:@m.precio
-                            </h3>
-                            <form method="post" action="AgregarPedido/GestionarPedidoController">
-                                <input type="hidden" name="txtNombre" value="@m.descripcion" />
-                                <input type="hidden" name="txtDescripcion" value="@m.precio" />
-                                <input type="hidden" name="txtObservacion" />
-                                <input type="hidden" name="txtPrecio" value="@m.precio" />
-                                <input type="hidden" name="txtidProducto" value="@m.id" />
-                                <input type="hidden" name="txtidMesa" value="@t.id" />
-                                <input type="hidden" name="txtidTrabajador" value="@tr.id" />
+                        <tr></tr>
+                    }
+                    numceldas++;
+                    <td align="center" width="25%">
+                        <img src="~/Imagenes/@m.imagen" style="width:100px; height:100px" />
+                        <h3 style="color:gray; font-family:Arial; font-size: 12px">
+                            Nombre:@m.descripcion
+                        </h3>
+                        <h3 style="color:gray; font-family:Arial; font-size: 12px">
+                            Detalle:@m.precio
+                        </h3>
+                        <form method="post" action="AgregarPedido/GestionarPedidoController">
+                            <input type="hidden" name="txtNombre" value="@m.descripcion" />
+                            <input type="hidden" name="txtDescripcion" value="@m.precio" />
+                            <input type="hidden" name="txtObservacion" />
+                            <input type="hidden" name="txtPrecio" value="@m.precio" />
+                            <input type="hidden" name="txtidProducto" value="@m.id" />
+                            <input type="hidden" name="txtidMesa" value="@t.id" />
+                            <input type="hidden" name="txtidTrabajador" value="@tr.id" />
 
-                                <input type="text" name="txtCant" value="1" style="width:30px" />
-                                <button class="btn btn-sm btn-success registrar" name="btnRegistrar" ><i class="fa fa-plus-circle"></i> Agregar</button>
-                            </form>
-                        </td>
-                        if (numceldas == 4)
-                        {
-                            <tr></tr>
-                            numceldas = 0;
-                        }
+                            <input type="text" name="txtCant" value="1" style="width:30px" />
+                            <button class="btn btn-sm btn-success registrar" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
+                        </form>
+                    </td>
+                    if (numceldas == 4)
+                    {
+                        <tr></tr>
+                        numceldas = 0;
                     }
                 }
-            </table>
-        </div>
-
-        <div id="CarritoPedidos">
-
-        </div>
-
+            }
+        </table>
     </div>
 </div>
 
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+</div>
 
-@section scripts{
+    @section scripts{
 
-    <script src="~/Recursos/assets/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.bootstrap.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.buttons.min.js"></script>
-    <script src="~/Recursos/assets/datatables/buttons.bootstrap.min.js"></script>
-    <script src="~/Recursos/assets/datatables/jszip.min.js"></script>
-    <script src="~/Recursos/assets/datatables/pdfmake.min.js"></script>
-    <script src="~/Recursos/assets/datatables/vfs_fonts.js"></script>
-    <script src="~/Recursos/assets/datatables/buttons.html5.min.js"></script>
-    <script src="~/Recursos/assets/datatables/buttons.print.min.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.fixedHeader.min.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.keyTable.min.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.responsive.min.js"></script>
-    <script src="~/Recursos/assets/datatables/responsive.bootstrap.min.js"></script>
-    <script src="~/Recursos/assets/datatables/dataTables.scroller.min.js"></script>
-    <script src="~/Recursos/js/datatables.init.js"></script>
+        <script src="~/Recursos/assets/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.bootstrap.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.buttons.min.js"></script>
+        <script src="~/Recursos/assets/datatables/buttons.bootstrap.min.js"></script>
+        <script src="~/Recursos/assets/datatables/jszip.min.js"></script>
+        <script src="~/Recursos/assets/datatables/pdfmake.min.js"></script>
+        <script src="~/Recursos/assets/datatables/vfs_fonts.js"></script>
+        <script src="~/Recursos/assets/datatables/buttons.html5.min.js"></script>
+        <script src="~/Recursos/assets/datatables/buttons.print.min.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.keyTable.min.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.responsive.min.js"></script>
+        <script src="~/Recursos/assets/datatables/responsive.bootstrap.min.js"></script>
+        <script src="~/Recursos/assets/datatables/dataTables.scroller.min.js"></script>
+        <script src="~/Recursos/js/datatables.init.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datatable').dataTable({
-                "language": {
-                    "url": '../Recursos/lang/Spanish.json'
-                }
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatable').dataTable({
+                    "language": {
+                        "url": '../Recursos/lang/Spanish.json'
+                    }
+                });
             });
-        });
-        TableManageButtons.init();
-
-        $("#verPedido").click(function () {
-            $("#CarritoPedidos").load('@Url.Action("VerPedido")', {
-
-            })
-        })
-
-    </script>
-}
+            TableManageButtons.init();
+        </script>
+    }

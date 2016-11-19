@@ -167,9 +167,17 @@
     <Content Include="Recursos\assets\form-wizard\wizard-init.js" />
     <Content Include="Recursos\assets\ionicon\css\ionicons.min.css" />
     <Content Include="Recursos\assets\ionicon\fonts\ioniconsbab9.svg" />
+    <Content Include="Recursos\assets\jquery-datatables-editable\datatables.css" />
+    <Content Include="Recursos\assets\jquery-datatables-editable\datatables.editable.init.js" />
+    <Content Include="Recursos\assets\jquery-datatables-editable\jquery.dataTables.js" />
     <Content Include="Recursos\assets\jquery.validate\form-validation-init.js" />
     <Content Include="Recursos\assets\jquery.validate\jquery.validate.min.js" />
+    <Content Include="Recursos\assets\magnific-popup\magnific-popup.css" />
+    <Content Include="Recursos\assets\magnific-popup\magnific-popup.js" />
     <Content Include="Recursos\assets\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Recursos\assets\modal-effect\css\component.css" />
+    <Content Include="Recursos\assets\modal-effect\js\classie.js" />
+    <Content Include="Recursos\assets\modal-effect\js\modalEffects.js" />
     <Content Include="Recursos\assets\select2\.img\select2x2.html" />
     <Content Include="Recursos\assets\select2\img\droparrows.png" />
     <Content Include="Recursos\assets\select2\img\select2-spinner.gif" />
@@ -321,6 +329,10 @@
   <ItemGroup>
     <Content Include="Views\GestionarVenta\_DetalleCliente.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GestionarPedido\GenerarPedido.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
