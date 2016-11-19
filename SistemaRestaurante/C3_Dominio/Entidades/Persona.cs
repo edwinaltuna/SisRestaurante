@@ -21,6 +21,11 @@ namespace C3_Dominio.Entidades
         {
             return DateTime.Now.Year - fechaNacimiento.Year == 18;
         }
+
+        public bool cumpleAniosHoy()
+        {
+            return fechaNacimiento == DateTime.Today;
+        }
         
         public string generarNombreCompleto()
         {

@@ -83,7 +83,7 @@ namespace C1_Presentacion.Controllers
             List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];  
             Cliente cliente = listaClientes.Find(item => item.id == data[0]);
             //cliente.fechaNacimiento = DateTime.Today; //para verificar que funciona owo
-            if (cliente.fechaNacimiento.Equals(DateTime.Today))
+            if (cliente.cumpleAniosHoy())
             {
                 return Json(Enumerable.Range(0, 1).Select(i => new { title="En hora buena",mensaje = "Es el cumpleaños de "+cliente.nombres+" y tiene acceso a un descuento" , estado = "success" }),JsonRequestBehavior.AllowGet);
 
@@ -98,7 +98,28 @@ namespace C1_Presentacion.Controllers
         public ActionResult SeleccionarPedido(int[] data)
         {
             Session["idPedido"] = data[0];
+
+
             return new EmptyResult();
+        }
+
+        [HttpPost]
+        public ActionResult ValidarCodigoPromocional(string codigo)
+        {
+            
+            float montoDescuento = 55.5f;
+            List<string> codigosValidos = new List<string>();
+            codigosValidos.Add("ABC123XYZ");
+            codigosValidos.Add("KLR345KLR");
+            codigosValidos.Add("JRO567JRO");
+            codigosValidos.Add("PTS000PTS");
+
+            bool codigoValido = codigosValidos.Contains(codigo);
+
+            return 
+                codigoValido ?
+                Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = $"El código ingresado hace acreedor al cliente de {montoDescuento} nuevos soles.", estado = "success" }), JsonRequestBehavior.AllowGet) :
+                Json(Enumerable.Range(0, 1).Select(i => new { title = "Error!", mensaje = "El código ingresado no es válido.", estado = "error" }), JsonRequestBehavior.AllowGet) ;
         }
 
         [HttpPost]
