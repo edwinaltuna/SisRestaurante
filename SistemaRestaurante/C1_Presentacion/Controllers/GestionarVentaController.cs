@@ -106,18 +106,19 @@ namespace C1_Presentacion.Controllers
         [HttpPost]
         public ActionResult ValidarCodigoPromocional(string codigo)
         {
+
+
+            Dictionary<string, float> codigosValidos = new Dictionary<string, float>();
+            codigosValidos.Add("ABC123XYZ", 55.5f);
+            codigosValidos.Add("KLR345KLR", 45.5f);
+            codigosValidos.Add("JRO567JRO", 22.5f);
+            codigosValidos.Add("PTS000PTS", 34.5f);
+
+            float montoDescuento = 0.0f;
             
-            float montoDescuento = 55.5f;
-            List<string> codigosValidos = new List<string>();
-            codigosValidos.Add("ABC123XYZ");
-            codigosValidos.Add("KLR345KLR");
-            codigosValidos.Add("JRO567JRO");
-            codigosValidos.Add("PTS000PTS");
 
-            bool codigoValido = codigosValidos.Contains(codigo);
-
-            return 
-                codigoValido ?
+            return
+                codigosValidos.TryGetValue(codigo, out montoDescuento) ?
                 Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = $"El código ingresado hace acreedor al cliente de {montoDescuento} nuevos soles.", estado = "success" }), JsonRequestBehavior.AllowGet) :
                 Json(Enumerable.Range(0, 1).Select(i => new { title = "Error!", mensaje = "El código ingresado no es válido.", estado = "error" }), JsonRequestBehavior.AllowGet) ;
         }
