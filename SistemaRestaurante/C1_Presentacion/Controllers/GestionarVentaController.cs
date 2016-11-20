@@ -80,17 +80,17 @@ namespace C1_Presentacion.Controllers
         [HttpPost]
         public ActionResult VerificarAccedeDescuento(int[] data)
         {
-            List<Cliente> listaClientes = (List<Cliente>) Session["listaClientes"];  
+            List<Cliente> listaClientes = (List<Cliente>)Session["listaClientes"];
             Cliente cliente = listaClientes.Find(item => item.id == data[0]);
             //cliente.fechaNacimiento = DateTime.Today; //para verificar que funciona owo
             if (cliente.cumpleAniosHoy())
             {
-                return Json(Enumerable.Range(0, 1).Select(i => new { title="En hora buena",mensaje = "Es el cumpleaños de "+cliente.nombres+" y tiene acceso a un descuento" , estado = "success" }),JsonRequestBehavior.AllowGet);
+                return Json(Enumerable.Range(0, 1).Select(i => new { title = "En hora buena", mensaje = "Es el cumpleaños de " + cliente.nombres + " y tiene acceso a un descuento", estado = "success" }), JsonRequestBehavior.AllowGet);
 
             }
             else
             {
-                return Json(Enumerable.Range(0, 1).Select(i => new { title = "Mala suerte", mensaje = "No es el cumpleaños de "+cliente.nombres, estado = "error" }), JsonRequestBehavior.AllowGet);
+                return Json(Enumerable.Range(0, 1).Select(i => new { title = "Mala suerte", mensaje = "No es el cumpleaños de " + cliente.nombres, estado = "error" }), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -115,20 +115,20 @@ namespace C1_Presentacion.Controllers
             codigosValidos.Add("PTS000PTS", 34.5f);
 
             float montoDescuento = 0.0f;
-            
+
 
             return
                 codigosValidos.TryGetValue(codigo, out montoDescuento) ?
-                Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = $"El código ingresado hace acreedor al cliente de {montoDescuento} nuevos soles.", estado = "success" }), JsonRequestBehavior.AllowGet) :
-                Json(Enumerable.Range(0, 1).Select(i => new { title = "Error!", mensaje = "El código ingresado no es válido.", estado = "error" }), JsonRequestBehavior.AllowGet) ;
+                Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = String.Format("El código ingresado hace acreedor al cliente de {0} nuevos soles.",montoDescuento), estado = "success" }), JsonRequestBehavior.AllowGet) :
+                Json(Enumerable.Range(0, 1).Select(i => new { title = "Error!", mensaje = "El código ingresado no es válido.", estado = "error" }), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public ActionResult MostrarPedidosVenta(int[] data)
         {
-            Venta venta= gestionarVentaServices.Instancia.ListarDetallesDeVenta(data[0]);
-            
-            return PartialView("_DetalleVenta",venta);
+            Venta venta = gestionarVentaServices.Instancia.ListarDetallesDeVenta(data[0]);
+
+            return PartialView("_DetalleVenta", venta);
         }
 
     }
