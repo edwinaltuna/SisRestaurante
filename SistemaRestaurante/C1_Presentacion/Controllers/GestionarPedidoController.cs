@@ -58,49 +58,48 @@ namespace C1_Presentacion.Controllers
 
         public ActionResult AgregarPedido(FormCollection frm)
         {
-            return View();
-        //    try
-        //    {
-        //        if (Convert.ToInt32(frm["txtCant"]) < 0)
-        //        {
-        //            ViewBag.mensajito = "Lo sentimos la cantidad debe ser mayor a cero";
-        //            List<Producto> listaproducto = gestionarPedidoServices.Instancia.ListarPedido();
-        //            return View("ListarProducto", listaproducto);
-        //        }
-        //        else {
-        //            if (Session["detalleventa"] == null) { CrearCarritoSession(); }
-        //            DataTable dt = (DataTable)Session["Venta"];
-        //            Boolean Existe = false;
-        //            foreach (DataRow f in dt.Rows)
-        //            {
-        //                Int32 cantidad = Convert.ToInt32(frm["txtCant"]);
-        //                if (Convert.ToInt32(frm["txtidProducto"]) == Convert.ToInt32(f["idProducto"]))
-        //                {
-        //                    Existe = true;
-        //                    f["cantidad"] = cantidad + Convert.ToInt32(f["cantidad"]);
-        //                    dt.AcceptChanges();
-        //                    break;
-        //                }
-        //            }
-        //            Session["detalleventa"] = dt;
-        //            if (!Existe)
-        //            {
-        //                DataRow r = dt.NewRow();
-        //                r[""] = Convert.ToInt32(frm[""]);
-        //                r[""] = Convert.ToInt32(frm[""]);
-        //                r[""] = Convert.ToInt32(frm[""]);
-        //                r[""] = Convert.ToInt32(frm[""]);
-        //                r[""] = Convert.ToInt32(frm[""]);
-        //                dt.Rows.Add(r);
-        //                return RedirectToAction("VerPedido");
-        //            }
-        //            else { return RedirectToAction("VerPedido"); }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
+            try
+            {
+                if (Convert.ToInt32(frm["txtCant"]) < 0)
+                {
+                    ViewBag.mensajito = "Lo sentimos la cantidad debe ser mayor a cero";
+                    List<Producto> listaproducto = gestionarPedidoServices.Instancia.ListarPedido();
+                    return View("ListarProducto", listaproducto);
+                }
+                else
+                {
+                    if (Session["detalleventa"] == null) { CrearCarritoSession(); }
+                    DataTable dt = (DataTable)Session["detalleventa"];
+                    Boolean Existe = false;
+                    foreach (DataRow f in dt.Rows)
+                    {
+                        Int32 cantidad = Convert.ToInt32(frm["txtCant"]);
+                        if (Convert.ToInt32(frm["txtidProducto"]) == Convert.ToInt32(f["idProducto"]))
+                        {
+                            Existe = true;
+                            f["cantidad"] = cantidad + Convert.ToInt32(f["cantidad"]);
+                            dt.AcceptChanges();
+                            break;
+                        }
+                    }
+                    Session["detalleventa"] = dt;
+                    if (!Existe)
+                    {
+                        DataRow r = dt.NewRow();
+                        r["idProducto"] = Convert.ToInt32(frm["txtidProducto"]);
+                        r["descripcion"] = frm["txtNombre"].ToString();
+                        r["cantidad"] = Convert.ToInt32(frm["txtCant"]);
+                        r["precio"] = Convert.ToDecimal(frm["txtPrecio"]);
+                        dt.Rows.Add(r);
+                        return RedirectToAction("GenerarPedido");
+                    }
+                    else { return RedirectToAction("GenerarPedido"); }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
     }
