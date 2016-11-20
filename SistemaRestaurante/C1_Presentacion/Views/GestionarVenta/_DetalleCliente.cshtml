@@ -38,6 +38,7 @@
 </div>
 
     <script type="text/javascript">
+        var loadingDiv = '<div class="panel-disabled"><div class="loader-1"></div></div>';
         function verificarAccedeDescuento(idCliente) {
             var data = new Array();
             data.push(idCliente);
@@ -49,7 +50,7 @@
                 url: '@Url.Action("VerificarAccedeDescuento", "GestionarVenta")',
                 data: JSON.stringify(data),
                 beforeSend: function () {
-                    $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+                    $('#panelNuevaVenta').append(loadingDiv);
                 },
                 success: function (response) {
                     $.FormWizard.secondStepValidaFecha = true;
@@ -97,7 +98,7 @@
                     codigo: $('#txtCodigoPromocional').val(),
                 }),
                 beforeSend: function () {
-                    $('#panelNuevaVenta').append('<div class="panel-disabled"><div class="loader-1"></div></div>');
+                    $('#panelNuevaVenta').append(loadingDiv);
                 },
                 success: function (response) {
                     $.FormWizard.secondStepValidaCodigoPromo = true;

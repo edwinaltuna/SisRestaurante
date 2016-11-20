@@ -8,7 +8,7 @@
 <div class="panel panel-default ">
     <div class="panel-heading">
         <h3 class="panel-title">
-            Line Chart
+            Reporte de Venta por Fecha
         </h3>
     </div>
 
@@ -16,36 +16,55 @@
            
         <form method="post" action="ListarVenta/ReportesController" class="form-horizontal">
 
+
+            @* Combos de fecha: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Fecha Inicio: </label>
                 <div class="col-sm-9">
-                    <a href="#" id="inline-dob" data-type="combodate" data-value="2016-01-01" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" name="ConboFInicio"></a>
+                    <a href="#" id="inline-dob" data-type="combodate" data-value="2016-01-01" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" name="ConboFInicio"></a>
                 </div>
             </div>
 
             <br />
 
-            
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">Fecha Fin: </label>
                 <div class="col-sm-8">
-                 <a href="#" id="dob" data-type="combodate" data-value="2016-11-05" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" name="ConboFFiN"></a>
+                 <a href="#" id="dob" data-type="combodate" data-value="2016-11-05" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1"  name="ConboFFiN"></a>
                 <!--   <input  id="dob" data-type="combodate" data-value="2016-11-05" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" name="ConboFFiN" />
                 -->
                 </div>
             </div>
+            @* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+
+            @* -Botones----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+
 
             <div class="form-group">
-                <button class="btn btn-sm btn-success"  name="btnIngresarFecha" >
-                <i class="fa fa-plus-circle"></i> Mostrar</button>
+                <div class="col-sm-3 control-label">
+                    <button class="btn btn-sm btn-success" name="btnIngresarFecha">
+                        <i class="fa fa-plus-circle"></i> Mostrar
+                    </button>
+                </div> 
+                <div class="col-sm-8">
+                    <button class="btn btn-sm btn-inverse" name="btnIngresarFecha">
+                        <i class="fa fa-plus-circle"></i> Salir
+                    </button> 
+                </diV>
+                </div>
+            @* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+            @* ---Grafico: ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
 
-            </div>
 
             <div class="form-group">
                 <div id="chart"></div>
             </div>
+            @* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+
+
         </form>
+
     </div>
 </div>
 
