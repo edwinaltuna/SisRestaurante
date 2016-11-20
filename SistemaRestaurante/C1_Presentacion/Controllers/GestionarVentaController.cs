@@ -119,7 +119,7 @@ namespace C1_Presentacion.Controllers
 
             return
                 codigosValidos.TryGetValue(codigo, out montoDescuento) ?
-                Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = $"El código ingresado hace acreedor al cliente de {montoDescuento} nuevos soles.", estado = "success" }), JsonRequestBehavior.AllowGet) :
+                Json(Enumerable.Range(0, 1).Select(i => new { title = "Felicidades!", mensaje = "El código ingresado hace acreedor al cliente de {montoDescuento} nuevos soles.", estado = "success" }), JsonRequestBehavior.AllowGet) :
                 Json(Enumerable.Range(0, 1).Select(i => new { title = "Error!", mensaje = "El código ingresado no es válido.", estado = "error" }), JsonRequestBehavior.AllowGet) ;
         }
 
