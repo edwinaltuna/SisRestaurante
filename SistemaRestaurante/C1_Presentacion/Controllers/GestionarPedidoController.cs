@@ -12,9 +12,10 @@ namespace C1_Presentacion.Controllers
 {
     public class GestionarPedidoController : Controller
     {
-        public ActionResult ListarProducto()
+        public ActionResult GenerarPedido()
         {
-            try {
+            try
+            {
                 List<Producto> listaproducto = gestionarPedidoServices.Instancia.ListarPedido();
                 return View(listaproducto);
             }
@@ -46,12 +47,12 @@ namespace C1_Presentacion.Controllers
 
         public ActionResult VerPedido()
         {
-            if (Session["detalleventa"] == null) { CrearCarritoSession();}
-            DataTable dt = (DataTable)Session["detalleVenta"];
-            decimal total = 0;
-            foreach (DataRow f in dt.Rows) { 
+            //if (Session["detalleventa"] == null) { CrearCarritoSession();}
+            //DataTable dt = (DataTable)Session["detalleVenta"];
+            //decimal total = 0;
+            //foreach (DataRow f in dt.Rows) { 
                 
-            }
+            //}
             return View();
         }
 

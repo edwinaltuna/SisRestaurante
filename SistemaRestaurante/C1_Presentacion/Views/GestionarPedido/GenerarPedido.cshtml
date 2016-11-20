@@ -1,0 +1,144 @@
+﻿@model List<C3_Dominio.Entidades.Producto>
+@using C3_Dominio.Entidades;
+@{
+    ViewBag.Title = "GenerarPedido";
+    Layout = "~/Views/MasterPage/Master.cshtml";
+    Mesa t = (Mesa)Session["mesa"];
+    Trabajador tr = (Trabajador)Session["trabajador"];
+}
+
+    <script type="text/javascript">
+        $(function () {
+            init();
+        });
+
+        function init() {
+            $("#mymodal").modal('show');
+        }
+
+    </script>
+<h2>Generar Pedido</h2>
+
+<!--Modal Para Listado de Productos-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;" id="mymodal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Busqueda Producto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <table id="datatable" style="width:100%">
+                        @{
+                            int numceldas = 0;
+                            foreach (var m in Model)
+                            {
+                                if (numceldas == 0)
+                                {
+                                    <tr></tr>
+                                }
+                                numceldas++;
+                                <td align="center" width="25%">
+                                    <img src="~/Imagenes/@m.imagen" style="width:100px; height:100px" />
+                                    <h3 style="color:gray; font-family:Arial; font-size: 12px">
+                                        Nombre:@m.descripcion
+                                    </h3>
+                                    <h3 style="color:gray; font-family:Arial; font-size: 12px">
+                                        Detalle:@m.precio
+                                    </h3>
+                                    <form method="post" action="AgregarPedido/GestionarPedidoController">
+                                        <input type="hidden" name="txtNombre" value="@m.descripcion" />
+                                        <input type="hidden" name="txtDescripcion" value="@m.precio" />
+                                        <input type="hidden" name="txtObservacion" />
+                                        <input type="hidden" name="txtPrecio" value="@m.precio" />
+                                        <input type="hidden" name="txtidProducto" value="@m.id" />
+                                        <input type="hidden" name="txtidMesa" value="@t.id" />
+                                        <input type="hidden" name="txtidTrabajador" value="@tr.id" />
+
+                                        <input type="text" name="txtCant" value="1" style="width:30px" />
+                                        <button class="btn btn-sm btn-success registrar" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                    </form>
+                                </td>
+                                if (numceldas == 4)
+                                {
+                                    <tr></tr>
+                                    numceldas = 0;
+                                }
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin del modal-->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"> Generar Pedido </h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal p-20" role="form">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Numero de Mesa:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly="" value="Readonly value">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Mozo:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly="" value="Readonly value">
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="m-b-30">
+                    <button id="addToTable" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modal-dialog" onclick="init()">Agregar Producto <i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped" id="datatable-editable">
+            <thead>
+                <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="gradeX">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="actions">
+                        <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                        <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                        <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+                <tr class="gradeC">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="actions">
+                        <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                        <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                        <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

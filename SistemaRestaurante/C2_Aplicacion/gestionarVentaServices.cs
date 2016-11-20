@@ -62,5 +62,18 @@ namespace C2_Aplicacion
                 throw;
             }
         }
+
+        public bool GuardarVenta(Venta venta)
+        {
+            try
+            {
+                return ventaSQL.GuardarVenta(venta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
