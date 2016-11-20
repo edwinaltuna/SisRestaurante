@@ -42,11 +42,14 @@ namespace C2_Aplicacion
             {
                 if (e.GetType().IsAssignableFrom(typeof(SqlConnection)))
                 {
-                    throw new ApplicationException("Error de conexion a la Bd");
+                    throw new ApplicationException("Error de conexion en la capa  Aplicación");
                 }
                 throw e;
             }
         }
+
+
+
         public IList<Producto> reporteDeProductos()
         {
             try

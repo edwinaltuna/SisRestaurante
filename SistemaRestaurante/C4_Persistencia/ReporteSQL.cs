@@ -26,8 +26,7 @@ namespace C4_Persistencia
            Venta ventaReporte = new Venta();
            ventaReporte.cantidad = result.GetInt16(0);
            ventaReporte.fecha = result.GetDateTime(1);
-           
-
+          
            return ventaReporte;
        }
        #endregion
