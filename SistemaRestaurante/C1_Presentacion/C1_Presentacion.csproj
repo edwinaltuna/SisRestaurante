@@ -265,9 +265,6 @@
     <Content Include="Views\TipoTrabajador\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\GestionarPedido\ListarProducto.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\GestionarPedido\VerPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>

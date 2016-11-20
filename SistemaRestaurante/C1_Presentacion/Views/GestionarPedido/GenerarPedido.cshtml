@@ -1,5 +1,6 @@
 ﻿@model List<C3_Dominio.Entidades.Producto>
 @using C3_Dominio.Entidades;
+@using System.Data;
 @{
     ViewBag.Title = "GenerarPedido";
     Layout = "~/Views/MasterPage/Master.cshtml";
@@ -49,12 +50,8 @@
                                     </h3>
                                     <form method="post" action="AgregarPedido/GestionarPedidoController">
                                         <input type="hidden" name="txtNombre" value="@m.descripcion" />
-                                        <input type="hidden" name="txtDescripcion" value="@m.precio" />
-                                        <input type="hidden" name="txtObservacion" />
                                         <input type="hidden" name="txtPrecio" value="@m.precio" />
                                         <input type="hidden" name="txtidProducto" value="@m.id" />
-                                        <input type="hidden" name="txtidMesa" value="@t.id" />
-                                        <input type="hidden" name="txtidTrabajador" value="@tr.id" />
 
                                         <input type="text" name="txtCant" value="1" style="width:30px" />
                                         <button class="btn btn-sm btn-success registrar" name="btnRegistrar"><i class="fa fa-plus-circle"></i> Agregar</button>
@@ -86,59 +83,72 @@
     <div class="panel-body">
         <form class="form-horizontal p-20" role="form">
             <div class="form-group">
+                <input type="hidden" name="txtidMesa" value="@t.id" />
+                <input type="hidden" name="txtidTrabajador" value="@tr.id" />
                 <label class="col-md-2 control-label">Numero de Mesa:</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" readonly="" value="Readonly value">
+                    <input type="text" class="form-control" readonly="" value="@t.numero">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">Mozo:</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" readonly="" value="Readonly value">
+                    <input type="text" class="form-control" readonly="" value="@tr.nombres @tr.apellidoPaterno @tr.apellidoMaterno">
                 </div>
             </div>
-        </form>
 
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="m-b-30">
-                    <button id="addToTable" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modal-dialog" onclick="init()">Agregar Producto <i class="fa fa-plus"></i></button>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="m-b-30">
+                        <button id="addToTable" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modal-dialog" onclick="init()">Agregar Producto <i class="fa fa-plus"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <table class="table table-bordered table-striped" id="datatable-editable">
-            <thead>
-                <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="gradeX">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="actions">
-                        <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                        <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                        <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                <tr class="gradeC">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="actions">
-                        <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                        <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                        <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table table-bordered table-striped" id="datatable-editable">
+                <thead>
+                    <tr>
+                        <th>Nombre Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Session["detalleventa"] == null)
+                    {
+                      <tr class="gradeX">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="actions">
+                              <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                              <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                              <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                              <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                          </td>
+                    </tr>
+                    }
+                    else
+                    {
+                        DataTable dt = (DataTable)Session["detalleventa"];
+                        foreach (DataRow item in dt.Rows)
+                        {
+                    <tr class="gradeX">
+                        <td>@item["descripcion"]</td>
+                        <td>@item["precio"]</td>
+                        <td>@item["cantidad"]</td>
+                        <td class="actions">
+                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>
